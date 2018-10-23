@@ -1,11 +1,5 @@
-# myreads-nanodegree
-React nanodegree module 1, basic react application of a book manager.
-The `home` page is divided in 3 shelfs where is categorized by state of books like: Want to read, read, and currently reading. 
-The user can move the books from each shelf in order to track it's current state.
-Also inside `home`, there is a magnifier icon that the user can clicks in order to navigate to the `search` page.
-Inside the `search` page the user can seek for books by using the allowed terms.
-Also he can move the some shelf and then it will appear on the `home` page.
-The user can navigate to `home` again by clicking on the home icon.
+# lecture-nanodegree
+React nanodegree module 2, basic react application of a technology forum.
 
 
 # Running the project
