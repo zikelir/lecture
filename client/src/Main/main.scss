@@ -1,0 +1,21 @@
+body {
+  background-image: linear-gradient(to bottom, $pr-black, $se-black);
+  width: 100%;
+  min-width: 480px;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  color: $pr-white;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: $ff-body;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+html {
+  background-image: linear-gradient(to bottom, $pr-black, $se-black);
+  background-color: $pr-black;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
