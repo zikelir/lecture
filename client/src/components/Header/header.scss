@@ -23,3 +23,25 @@
     margin-right: $mr-small;
   }
 }
+
+.subheader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $th-black;
+
+  &__item {
+    display: flex;
+    background-color: $se-black;
+    padding: $pd-medium $pd-large;
+    font-size: $fs-medium;
+    border-right: .3rem solid $pr-black;
+
+    &-active {
+      display: flex;
+      padding: $pd-medium $pd-large;
+      font-size: $fs-medium;
+      background-color: $pr-black;
+    }
+  }
+}
