@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Header from '../Header/Header';
-import Subheader from '../Subheader/Subheader';
-import Home from '../Home/Home';
+import Header from '../Header/Header.js';
+import Subheader from '../Subheader/Subheader.js';
+import Home from '../Home/Home.js';
 
 class Main extends React.Component {
   constructor(props) {
