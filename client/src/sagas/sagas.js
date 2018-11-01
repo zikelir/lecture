@@ -4,6 +4,6 @@ import fetchCategoriesApi from './categoriesSaga';
 
 export default function* rootSaga() {
   yield all([
-    fetchCategoriesApi()
+    fetchCategoriesApi('REQUEST_CATEGORIES'),
   ]);
 }

@@ -1,26 +1,26 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { fetchCategories } from "../../actions/categoriesAction.js";
+import { requestCategories } from "../../actions/categoriesAction.js";
 
-const categories = ["all", "react", "redux", "udacity"];
+// const categories = ["all", "react", "redux", "udacity"];
 class Header extends React.Component {
   componentDidMount() {
-    this.props.fetchCategories();
-    console.log(this.props);
+    this.props.requestCategories();
   }
 
   render() {
+    console.log(this.props.categories, 'PROPS');
     return (
       <React.Fragment>
         <div className="header">
           <div className="header__title">
             <div className="header__logo" />
-            Lecture <button onClick={this.props.fetchCategories}></button>
+            Lecture
           </div>
         </div>
         <div className="subheader">
-          { categories.map(item => (
+          {['2', '23'].map(item => (
             <div
               key={item}
               className={`${
@@ -36,9 +36,9 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ categories: state.categories });
+const mapStateToProps = () => ({ });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ fetchCategories }, dispatch);
+  bindActionCreators({ requestCategories }, dispatch);
 
 Header = connect(
   mapStateToProps,
