@@ -36,6 +36,10 @@
     padding: $pd-medium $pd-large;
     font-size: $fs-medium;
     border-right: .3rem solid $pr-black;
+    text-decoration: none;
+    &:visited {
+      color: $pr-white;
+    }
 
     &-active {
       display: flex;

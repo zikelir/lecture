@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestCategories } from "../../actions/categoriesAction.js";
@@ -39,14 +40,15 @@ class Header extends React.Component {
         </div>
         <div className="subheader">
           { categories ? this.iterateCategories(categories).map(item => (
-            <div
+            <Link
+              to={`/${item}`}
               key={item}
               className={`${
                 item === "all" ? "subheader__item-active" : "subheader__item"
               } `}
             >
               {item}
-            </div>
+            </Link>
           )) : ''}
         </div>
       </React.Fragment>
