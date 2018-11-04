@@ -1,15 +1,19 @@
-import { RECEIVE_CATEGORIES } from '../constants/categoriesConstants';
+import { RECEIVE_CATEGORIES, REQUEST_CATEGORIES } from '../constants/categoriesConstants';
 const INITIAL_STATE = {
-  categories: '',
+  categories: [],
 }
 
-export default (state = INITIAL_STATE, { type, categories }) => {
-  console.log(categories, type, ' reducer');
-  switch (type) {
+export default (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case REQUEST_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload.categories,
+      };
     case RECEIVE_CATEGORIES:
       return {
         ...state,
-        categories
+        categories: action.payload.categories,
       };
     default:
       return state;

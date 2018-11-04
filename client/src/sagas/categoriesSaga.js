@@ -5,7 +5,7 @@ import { receiveCategories } from '../actions/categoriesAction';
 import { fetchCategoriesApi } from '../services/categories';
 
 
-function* fetchCategoriesData(action) {
+function* fetchCategoriesData() {
   try {
     // call's api
     const categories = yield call(fetchCategoriesApi);
@@ -17,7 +17,5 @@ function* fetchCategoriesData(action) {
 }
 
 export default function* categoriesSaga() {
-  console.log('render saga');
-
   yield takeLatest(REQUEST_CATEGORIES, fetchCategoriesData);
 }
