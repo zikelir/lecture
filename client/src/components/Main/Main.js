@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header.js';
 import Subheader from '../Subheader/Subheader.js';
-import Home from '../Home/Home.js';
+import Categories from '../Categories/Categories.js';
 
 class Main extends React.Component {
   constructor(props) {
@@ -12,19 +12,33 @@ class Main extends React.Component {
   }
 
   render() {
+  const url = window.location.pathname;
+  const arr = ['react', 'redux', 'udacity'];
+
     return (
       <React.Fragment>
         <Header />
         <Subheader />
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <Home
-              {...props}
-            />
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={props => (
+              <Categories
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path='/category/:category'
+            render={props => (
+              <Categories
+                {...props}
+              />
+            )}
+          />
+        </Switch>
       </React.Fragment>
     );
   }

@@ -42,6 +42,12 @@ html {
   font-size: 62.5%;
 }
 
+a {
+  text-decoration: none;
+  &:visited {
+    color: $pr-white;
+  }
+}
 // mixins
 
 // Convert PX to EM global function

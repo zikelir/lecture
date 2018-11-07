@@ -16,7 +16,6 @@ class Header extends React.Component {
   iterateCategories = (categories) => {
     const categoryArr = [];
     if (categories) {
-      console.log(Object.values(categories));
       Object.values(categories).map((item) => {
         item.map(category => {
           return categoryArr.push(category.name);
@@ -27,24 +26,31 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props.categories, 'props')
     const { categories } = this.props;
-
+    const activePage = window.location.pathname;
     return (
       <React.Fragment>
         <div className="header">
-          <div className="header__title">
+          <Link to="/" className="header__title">
             <div className="header__logo" />
             Lecture
-          </div>
+          </Link>
         </div>
         <div className="subheader">
+        <Link
+              to='/'
+              className={`${
+                activePage === "/category/all" ? "subheader__item-active" : "subheader__item"
+              } `}
+            >
+              all
+            </Link>
           { categories ? this.iterateCategories(categories).map(item => (
             <Link
-              to={`/${item}`}
+              to={`/category/${item}`}
               key={item}
               className={`${
-                item === "all" ? "subheader__item-active" : "subheader__item"
+                item === "inactive" ? "subheader__item-active" : "subheader__item"
               } `}
             >
               {item}

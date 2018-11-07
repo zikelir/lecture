@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router'
 import { BrowserRouter } from 'react-router-dom';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
@@ -20,7 +21,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Main />
     </BrowserRouter>
   </Provider>,
