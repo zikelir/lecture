@@ -26,7 +26,7 @@ class Categories extends React.Component {
             <option value="byLikes">Ordered by likes...</option>
           </select>
         </div>
-        <div>{JSON.stringify(this.props)}</div>
+        <div>{JSON.stringify(this.props.allPosts)}</div>
       </div>
     );
   }
@@ -37,6 +37,7 @@ Categories.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state, 'state');
   const { postsReducer: { allPosts } } = state;
   return { allPosts };
 };

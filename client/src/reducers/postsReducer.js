@@ -4,16 +4,17 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
+  console.log(action)
   switch (action.type) {
     case REQUEST_ALL_POSTS:
       return {
         ...state,
-        categories: action.payload.allPosts,
+        allPosts: action.payload.allPosts,
       };
     case RECEIVE_ALL_POSTS:
       return {
         ...state,
-        categories: action.payload.allPosts,
+        allPosts: action.payload.allPosts,
       };
     default:
       return state;

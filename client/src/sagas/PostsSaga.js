@@ -10,6 +10,7 @@ function* fetchAllPostsData() {
     // call's api
     const allPosts = yield call(fetchAllPostsApi);
     // calls the action
+    console.log(allPosts);
     yield put(receiveAllPosts(allPosts));
   } catch (e) {
     console.log(e);
