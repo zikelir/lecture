@@ -31,7 +31,7 @@ class Main extends React.Component {
           />
           <Route
             exact
-            path='/category/:category'
+            path='/:category'
             render={props => (
               <Categories
                 {...props}

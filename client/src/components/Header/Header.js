@@ -40,14 +40,14 @@ class Header extends React.Component {
         <Link
               to='/'
               className={`${
-                activePage === "/category/all" ? "subheader__item-active" : "subheader__item"
+                activePage === "/" ? "subheader__item-active" : "subheader__item"
               } `}
             >
               all
             </Link>
           { categories ? this.iterateCategories(categories).map(item => (
             <Link
-              to={`/category/${item}`}
+              to={`/${item}`}
               key={item}
               className={`${
                 item === "inactive" ? "subheader__item-active" : "subheader__item"
@@ -62,7 +62,7 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = (state) => {
    const { categoriesReducer: { categories } } = state;
    return { categories };
  };

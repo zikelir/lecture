@@ -1,11 +1,30 @@
 .categories {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  flex-direction: row;
+  flex-direction: column;
   padding: $pd-large;
   &__title {
     font-size: $fs-large;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    padding: $pd-small 0;
+  }
+
+  &__button-add-post {
+    display: flex;
+    padding: $pd-xs-medium $pd-large;
+    background-color: $pr-green;
+    margin-right: $mr-medium;
+    &:after {
+      content: '+';
+      display: flex;
+      margin-left: $mr-small;
+      left: 0;
+    }
   }
 }
 
