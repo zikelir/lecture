@@ -22,9 +22,28 @@
     &:after {
       content: '+';
       display: flex;
-      margin-left: $mr-small;
-      left: 0;
+      margin-left: $mr-large;
     }
+  }
+
+  &__button-filter-by {
+    border: 0;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: $pd-small;
+    background-image: url('../dist/images/dropdown-arrow.svg');
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    font-family: $ff-main;
+  }
+
+  &__posts {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 

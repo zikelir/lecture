@@ -5,7 +5,6 @@ export const requestAllPosts = allPosts => ({
   payload: {
     allPosts
   },
-  test: console.log(allPosts)
 });
 
 export const receiveAllPosts = allPosts => ({
@@ -13,5 +12,4 @@ export const receiveAllPosts = allPosts => ({
   payload: {
     allPosts
   },
-  test: console.log(allPosts)
 });

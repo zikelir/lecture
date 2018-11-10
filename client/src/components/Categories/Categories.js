@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestAllPosts } from "../../actions/postsAction.js";
+import PostCard from '../PostCard/PostCard.js';
 
 class Categories extends React.Component {
   state = {
@@ -15,6 +16,7 @@ class Categories extends React.Component {
   }
 
   render() {
+    const { allPosts } = this.props;
     return (
       <div className="categories">
         <div className="categories__title">{window.location.pathname === '/' ? 'All' : window.location.pathname} Posts</div>
@@ -26,7 +28,11 @@ class Categories extends React.Component {
             <option value="byLikes">Ordered by likes...</option>
           </select>
         </div>
-        <div>{JSON.stringify(this.props.allPosts)}</div>
+        <div className="categories__posts">
+          {allPosts ? allPosts.map(item => {
+            return <PostCard post={item} />;
+          }) : ''}
+        </div>
       </div>
     );
   }
