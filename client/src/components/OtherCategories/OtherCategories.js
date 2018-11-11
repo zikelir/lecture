@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -17,16 +18,18 @@ class OtherCategories extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.categoryPosts !== nextProps.categoryPosts) {
+    if(this.props.location.pathname !== nextProps.location.pathname) {
       this.props.requestCategoryPosts();
+      return true;
     }
   }
 
   render() {
     const { categoryPosts } = this.props;
+    console.log(this.props);
     return (
-      <div className="categories">
-        <div className="categories__title">{window.location.pathname.replace('/','')} Posts</div>
+      <div className="categories" key={this.props.location.key}>
+        <div className="categories__title">{window.location.pathname.replace('/','').toUpperCase()} Posts</div>
         <div className="categories__buttons">
           <div className="categories__button-add-post">Add Post</div>
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered}>
@@ -37,7 +40,7 @@ class OtherCategories extends React.Component {
         </div>
         <div className="categories__posts">
           {categoryPosts ? categoryPosts.map(item => {
-            return <PostCard post={item} category={``} />;
+            return <PostCard post={item} key={item.id} />;
           }) : ''}
         </div>
       </div>
@@ -58,10 +61,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch =>
  bindActionCreators({ requestCategoryPosts }, dispatch);
 
- OtherCategories = connect(
+ OtherCategories = withRouter(connect(
  mapStateToProps,
  { requestCategoryPosts }
-)(OtherCategories);
+)(OtherCategories));
 
 
 export default OtherCategories;

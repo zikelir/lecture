@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import { requestAllPosts } from "../../actions/postsAction.js";
 
 import PostCard from '../PostCard/PostCard.js';
@@ -20,7 +21,7 @@ class Categories extends React.Component {
     const { allPosts } = this.props;
     return (
       <div className="categories">
-        <div className="categories__title">{window.location.pathname === '/' ? 'All' : window.location.pathname} Posts</div>
+        <div className="categories__title">ALL Posts</div>
         <div className="categories__buttons">
           <div className="categories__button-add-post">Add Post</div>
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered}>
@@ -50,10 +51,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch =>
  bindActionCreators({ requestAllPosts }, dispatch);
 
- Categories = connect(
+ Categories = withRouter(connect(
  mapStateToProps,
  { requestAllPosts }
-)(Categories);
+)(Categories));
 
 
 export default Categories;

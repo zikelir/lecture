@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestCategories } from "../../actions/categoriesAction.js";
+import { requestCategoryPosts } from '../../actions/categoryPostsAction';
 
 // const categories = ["all", "react", "redux", "udacity"];
 class Header extends React.Component {
@@ -52,6 +53,7 @@ class Header extends React.Component {
               className={`${
                 item === "inactive" ? "subheader__item-active" : "subheader__item"
               } `}
+              onClick={() => {this.props.requestCategoryPosts}}
             >
               {item}
             </Link>
@@ -67,7 +69,7 @@ const mapStateToProps = (state) => {
    return { categories };
  };
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestCategories }, dispatch);
+  bindActionCreators({ requestCategories, requestCategoryPosts }, dispatch);
 
 Header = connect(
   mapStateToProps,
