@@ -1,12 +1,27 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-// import { bindActionCreators } from "redux";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-// import { requestCategories } from "../../actions/categoriesAction.js";
+import { requestPost } from "../../actions/categoriesAction.js";
+import { updatePostApi } from '../../services/post.js';
 
 class PostCard extends React.Component {
+
+  incrementPosts = (post) => {
+    post.voteScore = post.voteScore + 1;
+    console.log(post.voteScore, post);
+    // updatePostApi(post);
+  }
+
+  decrementPosts = (post) => {
+    post.voteScore = post.voteScore -1;
+    console.log(post.voteScore);
+    // updatePostApi(post);
+  }
+
   render() {
     const { post } = this.props;
+    console.log(post);
     return (
       <React.Fragment>
         <div className="post-card" key={post.id}>
@@ -21,7 +36,7 @@ class PostCard extends React.Component {
             </div>
             <div className="post-card__infos">
               <div className="post-card__category">{post.category.toUpperCase()}</div>
-              <div className="post-card__date">22/12/2018</div>
+              <div className="post-card__date">{post.timestamp}</div>
               {
                 post.voteScore >= 0 ?
                   (<div className="post-card__thumbs-up">
@@ -38,11 +53,11 @@ class PostCard extends React.Component {
             </div>
             <div className="post-card__content">{post.body}</div>
             <div className="post-card__emotion-buttons">
-              <div className="post-card__emotion">
+              <div className="post-card__emotion" onClick={() => {this.incrementPosts(post)}}>
                 <div className="post-card__like-button"/>
                 <div className="post-card__emotion-label">Like</div>
               </div>
-              <div className="post-card__emotion">
+              <div className="post-card__emotion"  onClick={() => {this.decrementPosts(post)}}>
                 <div className="post-card__dislike-button" />
                 <div className="post-card__emotion-label">Dislike</div>
               </div>
@@ -54,16 +69,16 @@ class PostCard extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//    const { categoriesReducer: { categories } } = state;
-//    return { categories };
-//  };
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ requestCategories }, dispatch);
+const mapStateToProps = (state) => {
+   const { postReducer: { allPosts, categoryPosts } } = state;
+   return { allPosts, categoryPosts };
+ };
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ requestPost }, dispatch);
 
 PostCard = connect(
-  // mapStateToProps,
-  // { requestCategories }
+  mapStateToProps,
+  { requestPost }
 )(PostCard);
 
 export default PostCard;
