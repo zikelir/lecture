@@ -2,25 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestAllPosts } from "../../actions/postsAction.js";
+import { requestCategoryPosts } from '../../actions/categoryPostsAction';
 
 import PostCard from '../PostCard/PostCard.js';
 
-class Categories extends React.Component {
+class OtherCategories extends React.Component {
   state = {
     ordered: '',
-    allPosts: [],
+    categoryPosts: [],
   }
 
   componentDidMount() {
-    this.props.requestAllPosts();
+    this.props.requestCategoryPosts();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.categoryPosts !== nextProps.categoryPosts) {
+      this.props.requestCategoryPosts();
+    }
   }
 
   render() {
-    const { allPosts } = this.props;
+    const { categoryPosts } = this.props;
     return (
       <div className="categories">
-        <div className="categories__title">{window.location.pathname === '/' ? 'All' : window.location.pathname} Posts</div>
+        <div className="categories__title">{window.location.pathname.replace('/','')} Posts</div>
         <div className="categories__buttons">
           <div className="categories__button-add-post">Add Post</div>
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered}>
@@ -30,8 +36,8 @@ class Categories extends React.Component {
           </select>
         </div>
         <div className="categories__posts">
-          {allPosts ? allPosts.map(item => {
-            return <PostCard post={item} key={item.id} />;
+          {categoryPosts ? categoryPosts.map(item => {
+            return <PostCard post={item} category={``} />;
           }) : ''}
         </div>
       </div>
@@ -39,21 +45,23 @@ class Categories extends React.Component {
   }
 };
 
-Categories.propTypes = {
+OtherCategories.propTypes = {
 
 };
 
 const mapStateToProps = (state) => {
-  const { postsReducer: { allPosts } } = state;
-  return { allPosts };
+  console.log(state);
+  const { categoryPostsReducer: { categoryPosts } } = state;
+
+  return { categoryPosts };
 };
 const mapDispatchToProps = dispatch =>
- bindActionCreators({ requestAllPosts }, dispatch);
+ bindActionCreators({ requestCategoryPosts }, dispatch);
 
- Categories = connect(
+ OtherCategories = connect(
  mapStateToProps,
- { requestAllPosts }
-)(Categories);
+ { requestCategoryPosts }
+)(OtherCategories);
 
 
-export default Categories;
+export default OtherCategories;

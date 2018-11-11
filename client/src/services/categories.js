@@ -10,8 +10,3 @@ export const fetchCategoriesApi = async () => {
   }
 };
 
-export const fetchCategoriesCommentsApi = async (category) => {
-  const apiResponse = await fetch(`${baseUrl}/${category}/posts`, getHeader);
-  const returnedResponse = await apiResponse.json();
-  return returnedResponse;
-};

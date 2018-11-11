@@ -54,5 +54,59 @@
     max-height: 3.2rem;
   }
 
+  &__infos {
+    display: flex;
+    align-items: center;
+    padding: $pd-small 0;
+    font-size: $fs-xs-medium;
+  }
+
+  &__category {
+    padding-right: $pd-small;
+    color: $pr-purple;
+    display: flex;
+  }
+
+  &__date, &__thumbs-up, &__thumbs-down {
+    padding-right: $pd-small;
+    color: $pr-grey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__thumbs-up {
+    color: $positive-green;
+  }
+
+  &__thumbs-down {
+    color: $negative-red;
+  }
+
+  &__thumbs-up-icon {
+    background-image: url('../dist/images/arrow-up.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-small;
+  }
+
+  &__thumbs-down-icon {
+    background-image: url('../dist/images/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-small;
+  }
+
+  &__body {
+    color: $pr-black;
+    font-size: $fs-medium;
+  }
+
 
 }

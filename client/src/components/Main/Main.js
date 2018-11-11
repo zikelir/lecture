@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header.js';
 import Subheader from '../Subheader/Subheader.js';
 import Categories from '../Categories/Categories.js';
+import OtherCategories from '../OtherCategories/OtherCategories.js';
 
 class Main extends React.Component {
   constructor(props) {
@@ -12,9 +13,6 @@ class Main extends React.Component {
   }
 
   render() {
-  const url = window.location.pathname;
-  const arr = ['react', 'redux', 'udacity'];
-
     return (
       <React.Fragment>
         <Header />
@@ -33,7 +31,7 @@ class Main extends React.Component {
             exact
             path='/:category'
             render={props => (
-              <Categories
+              <OtherCategories
                 {...props}
               />
             )}

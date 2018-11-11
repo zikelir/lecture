@@ -7,13 +7,11 @@ import { connect } from "react-redux";
 class PostCard extends React.Component {
   render() {
     const { post } = this.props;
-    console.log(post);
     return (
       <React.Fragment>
-        <div className="post-card">
+        <div className="post-card" key={post.id}>
           <div className="post-card__user">
             <div className="post-card__avatar" />
-            {/* <div>{JSON.stringify(post)}</div> */}
             <div className="post-card__username">{post.author}</div>
           </div>
           <div className="post-card__body">
@@ -22,18 +20,23 @@ class PostCard extends React.Component {
               <div className="post-card__details-icon" />
             </div>
             <div className="post-card__infos">
-              <div className="post-card__category">{post.category}</div>
-              <div className="post-card__date">timestamp</div>
-              <div className="post-card__thumbs-up">
-                <div className="post-card__thumbs-up-icon" />
-                <div className="post-card_thumbs-up-count">upvote</div>
-              </div>
-              <div className="post-card__thumbs-down">
-                <div className="post-card__thumbs-up-down" />
-                <div className="post-card_thumbs-down-count">downvote</div>
-              </div>
+              <div className="post-card__category">{post.category.toUpperCase()}</div>
+              <div className="post-card__date">22/12/2018</div>
+              {
+                post.voteScore >= 0 ?
+                  (<div className="post-card__thumbs-up">
+                    <div className="post-card__thumbs-up-icon" />
+                    <div className="post-card__thumbs-up-count">{post.voteScore}</div>
+                  </div>)
+                 :
+                  (<div className="post-card__thumbs-down">
+                    <div className="post-card__thumbs-down-icon" />
+                    <div className="post-card_thumbs-down-count">{post.voteScore}</div>
+                  </div>)
+              }
             </div>
             <div className="post-card__content">{post.body}</div>
+            <div className="post-card__comment-count">Comments: {post.commentCount}</div>
           </div>
         </div>
       </React.Fragment>
