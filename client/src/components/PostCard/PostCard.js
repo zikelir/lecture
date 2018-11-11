@@ -26,17 +26,27 @@ class PostCard extends React.Component {
                 post.voteScore >= 0 ?
                   (<div className="post-card__thumbs-up">
                     <div className="post-card__thumbs-up-icon" />
-                    <div className="post-card__thumbs-up-count">{post.voteScore}</div>
+                    <div className="post-card__thumbs-up-count">{post.voteScore} likes</div>
                   </div>)
                  :
                   (<div className="post-card__thumbs-down">
                     <div className="post-card__thumbs-down-icon" />
-                    <div className="post-card_thumbs-down-count">{post.voteScore}</div>
+                    <div className="post-card_thumbs-down-count">{post.voteScore} dislikes</div>
                   </div>)
               }
+            <div className="post-card__comment-count">{post.commentCount} Comments</div>
             </div>
             <div className="post-card__content">{post.body}</div>
-            <div className="post-card__comment-count">Comments: {post.commentCount}</div>
+            <div className="post-card__emotion-buttons">
+              <div className="post-card__emotion">
+                <div className="post-card__like-button"/>
+                <div className="post-card__emotion-label">Like</div>
+              </div>
+              <div className="post-card__emotion">
+                <div className="post-card__dislike-button" />
+                <div className="post-card__emotion-label">Dislike</div>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>

@@ -3,7 +3,6 @@
   background-color: $pr-white;
   color: $pr-black;
   margin-top: $mr-medium;
-  // line-height: 1.4rem;
 
   &__user {
     background-color: $pr-purple;
@@ -57,18 +56,18 @@
   &__infos {
     display: flex;
     align-items: center;
-    padding: $pd-small 0;
+    // padding: $pd-small 0;
     font-size: $fs-xs-medium;
   }
 
   &__category {
-    padding-right: $pd-small;
+    padding-right: $pd-large;
     color: $pr-purple;
     display: flex;
   }
 
   &__date, &__thumbs-up, &__thumbs-down {
-    padding-right: $pd-small;
+    padding-right: $pd-large;
     color: $pr-grey;
     display: flex;
     flex-direction: row;
@@ -106,6 +105,42 @@
   &__body {
     color: $pr-black;
     font-size: $fs-medium;
+  }
+
+  &__content {
+    padding: $pd-medium $pd-medium 0 0;
+  }
+
+  &__emotion-buttons {
+    display: flex;
+    flex-direction: row;
+    padding-top: $pd-xl-large;
+  }
+
+  &__emotion {
+    display: flex;
+    flex-direction: row;
+    padding: 0 $pd-large 0 0;
+  }
+
+  &__like-button {
+    background-image: url('../dist/images/hearth.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
+  &__dislike-button {
+    background-image: url('../dist/images/brokenhearth.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
   }
 
 

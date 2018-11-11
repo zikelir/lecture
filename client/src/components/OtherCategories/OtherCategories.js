@@ -26,7 +26,6 @@ class OtherCategories extends React.Component {
 
   render() {
     const { categoryPosts } = this.props;
-    console.log(this.props);
     return (
       <div className="categories" key={this.props.location.key}>
         <div className="categories__title">{window.location.pathname.replace('/','').toUpperCase()} Posts</div>
