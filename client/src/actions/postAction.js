@@ -1,14 +1,14 @@
 import { REQUEST_POST, RECEIVE_POST } from '../constants/postConstants';
 
-export const requestAllPosts = post => ({
-  type: REQUEST_ALL_POSTS,
+export const requestPost = (post) => ({
+  type: REQUEST_POST,
   payload: {
-    post
+    post,
   },
 });
 
-export const receiveAllPosts = post => ({
-  type: RECEIVE_ALL_POSTS,
+export const receivePost = post => ({
+  type: RECEIVE_POST,
   payload: {
     post
   },

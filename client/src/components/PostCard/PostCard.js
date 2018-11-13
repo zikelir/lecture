@@ -2,26 +2,25 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestPost } from "../../actions/categoriesAction.js";
+import { requestPost, receivePost } from "../../actions/categoriesAction.js";
+import postReducer from '../../reducers/postReducer';
+
 import { updatePostApi } from '../../services/post.js';
+import fetchPostData from '../../sagas/postSaga.js';
 
 class PostCard extends React.Component {
 
   incrementPosts = (post) => {
-    post.voteScore = post.voteScore + 1;
-    console.log(post.voteScore, post);
-    // updatePostApi(post);
+    fetchPostData(post);
   }
 
   decrementPosts = (post) => {
     post.voteScore = post.voteScore -1;
-    console.log(post.voteScore);
     // updatePostApi(post);
   }
 
   render() {
-    const { post } = this.props;
-    console.log(post);
+    const { post, allPosts } = this.props;
     return (
       <React.Fragment>
         <div className="post-card" key={post.id}>
@@ -57,7 +56,7 @@ class PostCard extends React.Component {
                 <div className="post-card__like-button"/>
                 <div className="post-card__emotion-label">Like</div>
               </div>
-              <div className="post-card__emotion"  onClick={() => {this.decrementPosts(post)}}>
+              <div className="post-card__emotion"  onClick={() => {this.decrementPosts(post, allPosts)}}>
                 <div className="post-card__dislike-button" />
                 <div className="post-card__emotion-label">Dislike</div>
               </div>
@@ -70,6 +69,7 @@ class PostCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state, 'mstp');
    const { postReducer: { allPosts, categoryPosts } } = state;
    return { allPosts, categoryPosts };
  };
@@ -78,7 +78,7 @@ const mapDispatchToProps = dispatch =>
 
 PostCard = connect(
   mapStateToProps,
-  { requestPost }
+  mapDispatchToProps
 )(PostCard);
 
 export default PostCard;

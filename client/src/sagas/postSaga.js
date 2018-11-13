@@ -1,16 +1,19 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 
 import { REQUEST_POST } from '../constants/postConstants';
-import { receivePost } from '../actions/postAction';
+import { requestPost } from '../actions/postAction';
 import { fetchPostApi } from '../services/post';
+import requestReducer from '../reducers/postReducer';
 
 
-function* fetchPostData() {
+function* fetchPostData({post}) {
+  console.log(post);
+
   try {
     // call's api
-    const post = yield call(fetchPostApi);
-    // calls the action
-    yield put(receivePost(post));
+    yield call(fetchPostApi,post);
+    yield put({ type: 'REQUEST_POST', post });
+
   } catch (e) {
     console.log(e);
   }

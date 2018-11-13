@@ -1,6 +1,7 @@
 import { baseUrl } from "./config";
 
 export const updatePostApi = async (post) => {
+  console.log(post);
   try {
     const apiResponse = await fetch(`${baseUrl}/posts/${post.id}`, {
       method: "put",

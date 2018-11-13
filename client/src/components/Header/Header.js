@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestCategories } from "../../actions/categoriesAction.js";
+import { requestCategories } from "../../actions/categoriesAction";
 import { requestCategoryPosts } from '../../actions/categoryPostsAction';
+import { categoriesThunk } from '../../thunks/categoriesThunk';
 
 // const categories = ["all", "react", "redux", "udacity"];
 class Header extends React.Component {
@@ -11,7 +12,8 @@ class Header extends React.Component {
     categories: []
   }
   componentDidMount() {
-    this.props.requestCategories();
+    // this.props.requestCategories();
+    categoriesThunk();
   }
 
   iterateCategories = (categories) => {
