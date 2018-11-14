@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router'
 import { BrowserRouter } from 'react-router-dom';
 // import createSagaMiddleware from 'redux-saga';
-import thunk from "redux-thunk";
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware  } from 'redux';
+import ReduxThunk from 'redux-thunk'
 import rootReducer from './reducers/reducers';
+import middleware from './thunks/thunks';
 // import rootSaga from './sagas/sagas';
 import Main from './components/Main/Main';
 import './index.scss';
@@ -16,11 +17,11 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  // composeEnhancers(applyMiddleware(sagaMiddleware))
-  composeEnhancers(applyMiddleware(thunk))
+  // composeEnhancers(applyMiddleware(sagaMiddleware))1
+  composeEnhancers(applyMiddleware(ReduxThunk))
 );
 // sagaMiddleware.run(rootSaga);
-console.log(store.getState(), 'GS');
+// console.log(store.getState(), 'GS');
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter history={browserHistory}>

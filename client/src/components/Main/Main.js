@@ -27,7 +27,7 @@ class Main extends React.Component {
         <Header />
         <Subheader />
         <Switch>
-          <Route
+          {/* <Route
             exact
             path='/'
             render={props => (
@@ -36,7 +36,7 @@ class Main extends React.Component {
               />
             )}
           />
-          {categories ? this.generateCategoryComponents(categories) : null}
+          {categories ? this.generateCategoryComponents(categories) : null} */}
         </Switch>
       </React.Fragment>
     );

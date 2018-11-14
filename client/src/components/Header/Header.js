@@ -5,15 +5,18 @@ import { connect } from "react-redux";
 import { requestCategories } from "../../actions/categoriesAction";
 import { requestCategoryPosts } from '../../actions/categoryPostsAction';
 import { categoriesThunk } from '../../thunks/categoriesThunk';
+import { handleInitialData } from '../../utils/shared';
 
 // const categories = ["all", "react", "redux", "udacity"];
 class Header extends React.Component {
   state = {
     categories: []
   }
+
   componentDidMount() {
     // this.props.requestCategories();
-    categoriesThunk();
+    // categoriesThunk();
+    this.props.dispatch(handleInitialData());
   }
 
   iterateCategories = (categories) => {
@@ -48,7 +51,7 @@ class Header extends React.Component {
             >
               all
             </Link>
-          { categories ? this.iterateCategories(categories).map(item => (
+          {/* { categories ? this.iterateCategories(categories).map(item => (
             <Link
               to={`/${item}`}
               key={item}
@@ -59,7 +62,7 @@ class Header extends React.Component {
             >
               {item}
             </Link>
-          )) : ''}
+          )) : ''} */}
         </div>
       </React.Fragment>
     );
@@ -67,15 +70,15 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-   const { categoriesReducer: { categories } } = state;
-   return { categories };
+  //  const { categoriesReducer: { categories } } = state;
+  //  return { categories };
  };
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestCategories, requestCategoryPosts }, dispatch);
 
 Header = connect(
-  mapStateToProps,
-  { requestCategories }
+  // mapStateToProps,
+  // { requestCategories }
 )(Header);
 
 export default Header;

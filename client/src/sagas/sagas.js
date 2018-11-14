@@ -6,9 +6,9 @@ import fetchPostApi from './postSaga';
 
 export default function* rootSaga() {
   yield all([
-    fetchCategoriesApi('REQUEST_CATEGORIES'),
-    fetchAllPostsApi('REQUEST_ALL_POSTS'),
-    fetchCategoryPostsApi('REQUEST_CATEGORY_POSTS'),
-    fetchPostApi('REQUEST_POST'),
+    // fetchCategoriesApi('REQUEST_CATEGORIES'),
+    // fetchAllPostsApi('REQUEST_ALL_POSTS'),
+    // fetchCategoryPostsApi('REQUEST_CATEGORY_POSTS'),
+    // fetchPostApi('REQUEST_POST'),
   ]);
 }

@@ -14,7 +14,7 @@ class Categories extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestAllPosts();
+    // this.props.requestAllPosts();
   }
 
   render() {
@@ -31,9 +31,9 @@ class Categories extends React.Component {
           </select>
         </div>
         <div className="categories__posts">
-          {allPosts ? allPosts.map(item => {
+          {/* {allPosts ? allPosts.map(item => {
             return <PostCard post={item} key={item.id} />;
-          }) : ''}
+          }) : ''} */}
         </div>
       </div>
     );
