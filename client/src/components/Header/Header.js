@@ -14,8 +14,6 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.requestCategories();
-    // categoriesThunk();
     this.props.dispatch(handleInitialData());
   }
 
@@ -51,7 +49,7 @@ class Header extends React.Component {
             >
               all
             </Link>
-          {/* { categories ? this.iterateCategories(categories).map(item => (
+          { categories ? categories.map(item => (
             <Link
               to={`/${item}`}
               key={item}
@@ -62,7 +60,7 @@ class Header extends React.Component {
             >
               {item}
             </Link>
-          )) : ''} */}
+          )) : ''}
         </div>
       </React.Fragment>
     );
@@ -70,15 +68,12 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  //  const { categoriesReducer: { categories } } = state;
-  //  return { categories };
+   const { categoriesReducer: { categories } } = state;
+   return { categories };
  };
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestCategories, requestCategoryPosts }, dispatch);
 
 Header = connect(
-  // mapStateToProps,
-  // { requestCategories }
+  mapStateToProps,
 )(Header);
 
 export default Header;

@@ -31,9 +31,9 @@ class Categories extends React.Component {
           </select>
         </div>
         <div className="categories__posts">
-          {/* {allPosts ? allPosts.map(item => {
+          {allPosts ? allPosts.map(item => {
             return <PostCard post={item} key={item.id} />;
-          }) : ''} */}
+          }) : ''}
         </div>
       </div>
     );
@@ -48,12 +48,12 @@ const mapStateToProps = (state) => {
   const { postsReducer: { allPosts } } = state;
   return { allPosts };
 };
-const mapDispatchToProps = dispatch =>
- bindActionCreators({ requestAllPosts }, dispatch);
+// const mapDispatchToProps = dispatch =>
+//  bindActionCreators({ requestAllPosts }, dispatch);
 
  Categories = withRouter(connect(
  mapStateToProps,
- { requestAllPosts }
+//  { requestAllPosts }
 )(Categories));
 
 

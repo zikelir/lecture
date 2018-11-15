@@ -69,7 +69,6 @@ class PostCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, 'mstp');
    const { postReducer: { allPosts, categoryPosts } } = state;
    return { allPosts, categoryPosts };
  };

@@ -6,17 +6,24 @@ import Header from '../Header/Header.js';
 import Subheader from '../Subheader/Subheader.js';
 import Categories from '../Categories/Categories.js';
 import OtherCategories from '../OtherCategories/OtherCategories.js';
+import { handleInitialData } from '../../utils/shared';
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      categories: [],
+    };
+  }
+
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
   }
 
   generateCategoryComponents = (categories) => {
     if(categories) {
-      return categories.map((item, key) => <Route exact path={`/${item.name}`} component={OtherCategories} key={key} />);
+      return categories.map((item, key) => <Route exact path={`/${item}`} component={OtherCategories} key={key} />);
     }
   }
 
@@ -27,7 +34,7 @@ class Main extends React.Component {
         <Header />
         <Subheader />
         <Switch>
-          {/* <Route
+          <Route
             exact
             path='/'
             render={props => (
@@ -36,7 +43,7 @@ class Main extends React.Component {
               />
             )}
           />
-          {categories ? this.generateCategoryComponents(categories) : null} */}
+          {categories ? this.generateCategoryComponents(categories) : null}
         </Switch>
       </React.Fragment>
     );
@@ -45,7 +52,7 @@ class Main extends React.Component {
 
 const mapStateToProps = (state) => {
   if(state.categoriesReducer.categories) {
-    const { categoriesReducer: { categories: { categories } } } = state;
+    const { categoriesReducer: { categories } } = state;
     return { categories };
   }
 };

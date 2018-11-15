@@ -4,18 +4,18 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action, 'reducer');
+  console.log(action, 'reducer CAT POSTS');
   switch (action.type) {
       case RECEIVE_CATEGORY_POSTS:
       return {
         ...state,
         categoryPosts: action.payload.categoryPosts
       };
-    case REQUEST_CATEGORY_POSTS:
-      return {
-        ...state,
-        categoryPosts: action.payload.categoryPosts,
-      };
+    // case REQUEST_CATEGORY_POSTS:
+    //   return {
+    //     ...state,
+    //     categoryPosts: action.payload.categoryPosts,
+    //   };
     default:
       return state;
   }
