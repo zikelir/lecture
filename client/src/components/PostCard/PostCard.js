@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestPost, receivePost } from "../../actions/categoriesAction.js";
 import postReducer from '../../reducers/postReducer';
+import { increatePost } from '../../utils/post';
 
 import { updatePostApi } from '../../services/post.js';
 import fetchPostData from '../../sagas/postSaga.js';
@@ -11,7 +12,7 @@ import fetchPostData from '../../sagas/postSaga.js';
 class PostCard extends React.Component {
 
   incrementPosts = (post) => {
-    fetchPostData(post);
+    this.props.dispatch(increatePost(post));
   }
 
   decrementPosts = (post) => {
@@ -21,6 +22,7 @@ class PostCard extends React.Component {
 
   render() {
     const { post, allPosts } = this.props;
+    console.log(post);
     return (
       <React.Fragment>
         <div className="post-card" key={post.id}>
@@ -56,7 +58,7 @@ class PostCard extends React.Component {
                 <div className="post-card__like-button"/>
                 <div className="post-card__emotion-label">Like</div>
               </div>
-              <div className="post-card__emotion"  onClick={() => {this.decrementPosts(post, allPosts)}}>
+              <div className="post-card__emotion"  onClick={() => {this.decrementPosts(post)}}>
                 <div className="post-card__dislike-button" />
                 <div className="post-card__emotion-label">Dislike</div>
               </div>
@@ -72,12 +74,12 @@ const mapStateToProps = (state) => {
    const { postReducer: { allPosts, categoryPosts } } = state;
    return { allPosts, categoryPosts };
  };
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestPost }, dispatch);
+// const mapDispatchToProps = dispatch =>
+//   bindActionCreators({ requestPost }, dispatch);
 
 PostCard = connect(
   mapStateToProps,
-  mapDispatchToProps
+  // mapDispatchToProps
 )(PostCard);
 
 export default PostCard;

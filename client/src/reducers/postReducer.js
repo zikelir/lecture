@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
+  console.log(action, action);
   switch (action.type) {
     case REQUEST_POST:
       return {
@@ -16,7 +16,7 @@ export default (state = INITIAL_STATE, action) => {
     case RECEIVE_POST:
       return {
         ...state,
-        allPosts: action.payload.allPosts,
+        // allPosts: action.payload.allPosts,
       };
     default:
       return state;

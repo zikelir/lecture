@@ -4,7 +4,6 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action, 'reducer CAT POSTS');
   switch (action.type) {
       case RECEIVE_CATEGORY_POSTS:
       return {

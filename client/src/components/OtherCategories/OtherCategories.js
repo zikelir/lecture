@@ -17,8 +17,6 @@ class OtherCategories extends React.Component {
 
   componentDidMount() {
     // this.props.requestCategoryPosts();
-    console.log('didmount');
-    console.log(this.props.location.pathname, 'path');
     this.props.dispatch(handleCategoryPost());
   }
 
@@ -32,7 +30,6 @@ class OtherCategories extends React.Component {
 
   render() {
     const { categoryPosts } = this.props;
-    console.log('THIS PROPS', this.props);
     return (
       <div className="categories" key={this.props.location.key}>
         <div className="categories__title">{window.location.pathname.replace('/','').toUpperCase()} Posts</div>
@@ -59,7 +56,6 @@ OtherCategories.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   const { categoryPostsReducer: { categoryPosts } } = state;
 
   return { categoryPosts };

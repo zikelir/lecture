@@ -7,8 +7,6 @@ import requestReducer from '../reducers/postReducer';
 
 
 function* fetchPostData({post}) {
-  console.log(post);
-
   try {
     // call's api
     yield call(fetchPostApi,post);
