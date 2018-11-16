@@ -1,4 +1,5 @@
-import { REQUEST_POST, RECEIVE_POST } from '../constants/postConstants';
+// import { REQUEST_POST, RECEIVE_POST } from '../constants/postConstants';
+const UPDATE_POST =  'UPDATE_POST';
 
 // export const requestPost = (post) => ({
 //   type: REQUEST_POST,
@@ -8,8 +9,8 @@ import { REQUEST_POST, RECEIVE_POST } from '../constants/postConstants';
 // });
 
 export const updatePost = post => ({
-  type: RECEIVE_POST,
+  type: UPDATE_POST,
   payload: {
-    post: post.voteScore += 1
+    post: post
   },
 });

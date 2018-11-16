@@ -21,8 +21,7 @@ class PostCard extends React.Component {
   }
 
   render() {
-    const { post, allPosts } = this.props;
-    console.log(post);
+    const { post } = this.props;
     return (
       <React.Fragment>
         <div className="post-card" key={post.id}>

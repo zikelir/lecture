@@ -1,14 +1,17 @@
-import { fetchCategoryPostsApi } from '../services/categoryPostsApi';
+import { updatePostApi } from '../services/post';
 import { updatePost } from '../actions/postAction';
 
 export function increatePost(post) {
   console.log(post, 'POST');
   return (dispatch) => {
-    post = post.voteScore += 1;
-    fetchCategoryPostsApi(post).then(() => {
-      dispatch(updatePost(post));
+    const score = post.voteScore;
+    post.voteScore = score + 1;
+    console.log(post, 'AFTER ASSING');
+    updatePostApi(post).then((result) => {
+      console.log(result, 'RES');
+      dispatch(updatePost(result));
     }).catch((error) => {
-      console.log(error);
+      console.log(error, 'errr');
       return error;
     });
   }

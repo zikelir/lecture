@@ -1,4 +1,5 @@
 import { REQUEST_POST, RECEIVE_POST } from '../constants/postConstants';
+const UPDATE_POST = 'UPDATE_POST';
 const INITIAL_STATE = {
   allPosts: [],
   categoryPosts: [],
@@ -6,18 +7,21 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action, action);
   switch (action.type) {
-    case REQUEST_POST:
+    case UPDATE_POST:
       return {
         ...state,
-        // post: action.payload.post
-      };
-    case RECEIVE_POST:
-      return {
-        ...state,
-        // allPosts: action.payload.allPosts,
-      };
+        allPosts: state.allPosts.map(item => {
+          if(item.id === action.payload.post.id) {
+            return action.payload.post;
+          }
+        }),
+        categoryPosts: state.categoryPosts.map(item => {
+          if(item.id === action.payload.post.id) {
+            return action.payload.post;
+          }
+        }),
+      }
     default:
       return state;
   }
