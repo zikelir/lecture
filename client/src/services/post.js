@@ -1,7 +1,6 @@
 import { baseUrl } from "./config";
 
-export const updatePostApi = async (post) => {
-  console.log(post, 'API POST');
+export const updatePostApi = async (post, actionType) => {
   try {
     const apiResponse = await fetch(`${baseUrl}/posts/${post.id}`, {
       method: "POST",
@@ -11,7 +10,7 @@ export const updatePostApi = async (post) => {
       },
       credentials: "same-origin",
       body: JSON.stringify({
-        'option': 'upVote',
+        'option': actionType,
       })
     });
     const returnedResponse = await apiResponse.json();

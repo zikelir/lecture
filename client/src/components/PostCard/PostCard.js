@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestPost, receivePost } from "../../actions/categoriesAction.js";
 import postReducer from '../../reducers/postReducer';
-import { increatePost } from '../../utils/post';
+import { increasePost, decreasePost } from '../../utils/post';
 
 import { updatePostApi } from '../../services/post.js';
 import fetchPostData from '../../sagas/postSaga.js';
@@ -12,12 +12,11 @@ import fetchPostData from '../../sagas/postSaga.js';
 class PostCard extends React.Component {
 
   incrementPosts = (post) => {
-    this.props.dispatch(increatePost(post));
+    this.props.dispatch(increasePost(post));
   }
 
   decrementPosts = (post) => {
-    post.voteScore = post.voteScore -1;
-    // updatePostApi(post);
+    this.props.dispatch(decreasePost(post));
   }
 
   render() {
