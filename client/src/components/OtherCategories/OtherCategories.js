@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 // import { requestCategoryPosts } from '../../actions/categoryPostsAction';
@@ -34,7 +35,11 @@ class OtherCategories extends React.Component {
       <div className="categories" key={this.props.location.key}>
         <div className="categories__title">{window.location.pathname.replace('/','').toUpperCase()} Posts</div>
         <div className="categories__buttons">
-          <div className="categories__button-add-post">Add Post</div>
+          <Link
+                to="/addPost"
+                className="categories__button-add-post"
+              >Add Post</Link>
+          {/* <div className="categories__button-add-post">Add Post</div> */}
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered}>
             <option value="" defaultValue>Order by...</option>
             <option value="byDate">Ordered by date...</option>

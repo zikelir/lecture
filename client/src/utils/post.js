@@ -6,7 +6,6 @@ export function increasePost(post) {
     const score = post.voteScore;
     post.voteScore = score + 1;
     updatePostApi(post, 'upVote').then((result) => {
-      console.log(result, 'RES');
       dispatch(updatePost(result));
     }).catch((error) => {
       console.log(error, 'errr');
@@ -20,7 +19,6 @@ export function decreasePost(post) {
     const score = post.voteScore;
     post.voteScore = score - 1;
     updatePostApi(post, 'downVote').then((result) => {
-      console.log(result, 'RES');
       dispatch(updatePost(result));
     }).catch((error) => {
       console.log(error, 'errr');

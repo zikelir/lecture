@@ -1,4 +1,3 @@
-import { REQUEST_POST, RECEIVE_POST } from '../constants/postConstants';
 const UPDATE_POST = 'UPDATE_POST';
 const INITIAL_STATE = {
   allPosts: [],

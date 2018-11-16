@@ -3,9 +3,9 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Header from '../Header/Header.js';
-import Subheader from '../Subheader/Subheader.js';
 import Categories from '../Categories/Categories.js';
 import OtherCategories from '../OtherCategories/OtherCategories.js';
+import AddPost from '../AddPost/AddPost.js';
 import { handleInitialData } from '../../utils/shared';
 
 class Main extends React.Component {
@@ -32,7 +32,6 @@ class Main extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <Subheader />
         <Switch>
           <Route
             exact
@@ -44,6 +43,7 @@ class Main extends React.Component {
             )}
           />
           {categories ? this.generateCategoryComponents(categories) : null}
+          <Route exact path="/addPost" component={AddPost} />
         </Switch>
       </React.Fragment>
     );
