@@ -15,28 +15,28 @@ class AddPost extends React.Component {
       <React.Fragment>
         <div className="add-post">
           <div className="add-post__title">ADD POST</div>
-          <div>
+          <div className="add-post__inputs">
             <div>Post Title:</div>
             <input type="text"/>
           </div>
-          <div>
-            <div>Post Category:</div>
-            <select>
+          <div className="add-post__inputs">
+            <div className="add-post__input-label">Post Category:</div>
+            <select className="add-post__category-select">
               <option value="react">React</option>
               <option value="redux">Redux</option>
               <option value="udacity">Udacity</option>
             </select>
           </div>
-          <div>
-            <div>Date:</div>
+          <div className="add-post__inputs">
+            <div className="add-post__input-label">Date:</div>
             <div>{Date.now()}</div>
           </div>
-          <div>
-            <div>Author:</div>
+          <div className="add-post__inputs">
+            <div className="add-post__input-label">Author:</div>
             <input type="text"/>
           </div>
-          <div>
-            <div>Content:</div>
+          <div className="add-post__inputs">
+            <div className="add-post__input-label">Content:</div>
             <input type="text"/>
           </div>
           <button>Save</button>

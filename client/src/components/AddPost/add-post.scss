@@ -7,4 +7,23 @@
   &__title {
     font-size: $fs-large;
   }
+  &__inputs {
+    font-size: $fs-medium;
+    padding-top: $pd-large;
+  }
+  &__input-label {
+    padding-bottom: $pd-small;
+  }
+
+  &__category-select {
+    border: 0;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: $pd-small;
+    background-image: url('../dist/images/dropdown-arrow.svg');
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    font-family: $ff-main;
+  }
 }
