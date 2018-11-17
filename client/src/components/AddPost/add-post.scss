@@ -7,10 +7,15 @@
   &__title {
     font-size: $fs-large;
   }
+
   &__inputs {
     font-size: $fs-medium;
     padding-top: $pd-large;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   }
+
   &__input-label {
     padding-bottom: $pd-small;
   }
@@ -22,8 +27,21 @@
     -webkit-appearance: none;
     padding: $pd-small;
     background-image: url('../dist/images/dropdown-arrow.svg');
-    background-position: 95% 50%;
+    background-position: 98% 50%;
     background-repeat: no-repeat;
     font-family: $ff-main;
+    // padding-right: $pd-xl-large;
+  }
+
+  &__textarea {
+    width: 100%;
+    height: 20rem;
+  }
+
+  &__save-button {
+    background-color: $pr-green;
+    margin-top: $mr-medium;
+    padding: $pd-medium $pd-large;
+    cursor: pointer;
   }
 }

@@ -19,3 +19,24 @@ export const updatePostApi = async (post, actionType) => {
     console.log(e);
   }
 };
+
+export const addPostApi = async (post) => {
+  try {
+    const apiResponse = await fetch(`${baseUrl}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'foo',
+      },
+      credentials: "same-origin",
+      body: JSON.stringify(
+        post
+      )
+    });
+    const returnedResponse = await apiResponse.json();
+    return returnedResponse;
+  } catch (e) {
+    console.log(e);
+  }
+};
+

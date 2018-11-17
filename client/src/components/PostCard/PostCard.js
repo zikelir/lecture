@@ -19,8 +19,14 @@ class PostCard extends React.Component {
     this.props.dispatch(decreasePost(post));
   }
 
+  convertDateToStr = (date) => {
+    const strdate = new Date(date);
+    return strdate.toDateString();
+  }
+
   render() {
     const { post } = this.props;
+
     return (
       <React.Fragment>
         <div className="post-card" key={post.id}>
@@ -34,8 +40,8 @@ class PostCard extends React.Component {
               <div className="post-card__details-icon" />
             </div>
             <div className="post-card__infos">
-              <div className="post-card__category">{post.category.toUpperCase()}</div>
-              <div className="post-card__date">{post.timestamp}</div>
+              <div className="post-card__category">{post.category && post.category.toUpperCase()}</div>
+              <div className="post-card__date">{post.timestamp && `Created in: ${this.convertDateToStr(post.timestamp)}`}</div>
               {
                 post.voteScore >= 0 ?
                   (<div className="post-card__thumbs-up">
