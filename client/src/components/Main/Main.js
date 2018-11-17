@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { bindActionCreators } from "redux";
+// import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Header from '../Header/Header.js';
 import Categories from '../Categories/Categories.js';
 import OtherCategories from '../OtherCategories/OtherCategories.js';
 import AddPost from '../AddPost/AddPost.js';
+import PostDetails from '../PostDetails/PostDetails.js';
 import { handleInitialData } from '../../utils/shared';
 
 class Main extends React.Component {
@@ -14,6 +15,7 @@ class Main extends React.Component {
 
     this.state = {
       categories: [],
+
     };
   }
 
@@ -44,6 +46,7 @@ class Main extends React.Component {
           />
           {categories ? this.generateCategoryComponents(categories) : null}
           <Route exact path="/addPost" component={AddPost} />
+          <Route exact path="/:category/:post_id" component={PostDetails} />
         </Switch>
       </React.Fragment>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestPost, receivePost } from "../../actions/categoriesAction.js";
@@ -24,6 +24,11 @@ class PostCard extends React.Component {
     return strdate.toDateString();
   }
 
+  seeDetails = (post) => {
+    console.log(post);
+    this.props.history.push(`/${post.category}/${post.id}`);
+  }
+
   render() {
     const { post } = this.props;
 
@@ -37,7 +42,7 @@ class PostCard extends React.Component {
           <div className="post-card__body">
             <div className="post-card__header">
               <div className="post-card__title">{post.title}</div>
-              <div className="post-card__details-icon" />
+              <div className="post-card__details-icon" onClick={() => { this.seeDetails(post) }} />
             </div>
             <div className="post-card__infos">
               <div className="post-card__category">{post.category && post.category.toUpperCase()}</div>
@@ -81,9 +86,9 @@ const mapStateToProps = (state) => {
 // const mapDispatchToProps = dispatch =>
 //   bindActionCreators({ requestPost }, dispatch);
 
-PostCard = connect(
+PostCard =  withRouter(connect(
   mapStateToProps,
   // mapDispatchToProps
-)(PostCard);
+)(PostCard));
 
 export default PostCard;
