@@ -19,17 +19,20 @@ class PostDetails extends React.Component {
 
   incrementPosts = (post) => {
     this.props.dispatch(increasePost(post));
-    this.props.dispatch(getPostDetails(this.props.match.params.post_id));
   }
 
   decrementPosts = (post) => {
     this.props.dispatch(decreasePost(post));
-    this.props.dispatch(getPostDetails(this.props.match.params.post_id));
   }
 
   convertDateToStr = (date) => {
     const strdate = new Date(date);
     return strdate.toDateString();
+  }
+
+  seeDetails = (post) => {
+    console.log(post);
+    this.props.history.push(`/${post.category}/${post.id}`);
   }
 
   render() {
@@ -62,7 +65,7 @@ class PostDetails extends React.Component {
                     <div className="post-details_thumbs-down-count">{post.voteScore} dislikes</div>
                   </div>)
               }
-            {/* <div className="post-details__comment-count">{post.commentCount} Comments</div> */}
+            <div className="post-details__comment-count">{post.commentCount} Comments</div>
             </div>
             <div className="post-details__content">{post.body}</div>
             <div className="post-details__emotion-buttons">
@@ -75,15 +78,11 @@ class PostDetails extends React.Component {
                 <div className="post-details__emotion-label">Dislike</div>
               </div>
             </div>
-            <div>
-              Comment: <input type="text"/> <button>send</button>
-            </div>
             <div className="post-details__comments">
                 {postComments && postComments.map(item => {
-                  // return (<div>{item.body}</div>)
-                  return JSON.stringify(item)
+                  return (<div>{item.body}</div>)
                 })}
-            </div>
+              </div>
           </div>
         </div>
       </React.Fragment>

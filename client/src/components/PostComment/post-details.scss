@@ -1,0 +1,150 @@
+.post-details {
+  display: flex;
+  background-color: $pr-white;
+  color: $pr-black;
+  margin: $mr-medium;
+  // padding: $pd-medium;
+
+  &__user {
+    background-color: $pr-purple;
+    color: $pr-white;
+    padding: $pd-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__avatar {
+    background-image: url('../dist/images/phantasm2.svg');
+    background-size: 6.4rem;
+    background-position: center;
+    background-color: $se-purple;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    width: 6.5rem;
+    height: 6.5rem;
+    padding: $pd-large;
+  }
+
+  &__username {
+    padding: $pd-medium;
+  }
+
+  &__body {
+    padding: $pd-large;
+    width: 100%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    padding-bottom: $pd-small;
+    font-size: $fs-large;
+  }
+
+  &__details-icon {
+    background-image: url('../dist/images/eye.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-width: 3.2rem;
+    max-height: 3.2rem;
+    cursor: pointer;
+  }
+
+  &__infos {
+    display: flex;
+    align-items: center;
+    // padding: $pd-small 0;
+    font-size: $fs-xs-medium;
+  }
+
+  &__category {
+    padding-right: $pd-large;
+    color: $pr-purple;
+    display: flex;
+  }
+
+  &__date, &__thumbs-up, &__thumbs-down {
+    padding-right: $pd-large;
+    color: $pr-grey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__thumbs-up {
+    color: $positive-green;
+  }
+
+  &__thumbs-down {
+    color: $negative-red;
+  }
+
+  &__thumbs-up-icon {
+    background-image: url('../dist/images/arrow-up.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-small;
+  }
+
+  &__thumbs-down-icon {
+    background-image: url('../dist/images/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-small;
+  }
+
+  &__body {
+    color: $pr-black;
+    font-size: $fs-medium;
+  }
+
+  &__content {
+    padding: $pd-medium $pd-medium 0 0;
+  }
+
+  &__emotion-buttons {
+    display: flex;
+    flex-direction: row;
+    padding-top: $pd-xl-large;
+  }
+
+  &__emotion {
+    display: flex;
+    flex-direction: row;
+    padding: 0 $pd-large 0 0;
+    cursor: pointer;
+  }
+
+  &__like-button {
+    background-image: url('../dist/images/hearth.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
+  &__dislike-button {
+    background-image: url('../dist/images/brokenhearth.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
+
+}
