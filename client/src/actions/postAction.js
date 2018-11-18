@@ -1,6 +1,7 @@
 const UPDATE_POST =  'UPDATE_POST';
 const ADD_POST =  'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
+const PUT_POST = 'PUT_POST';
 const GET_POST_DETAIL = 'GET_POST_DETAIL';
 const GET_POST_COMMENTS = 'GET_POST_COMMENTS';
 
@@ -24,6 +25,14 @@ export const deletePostAction = post => ({
     post: post
   },
 });
+
+export const putPostAction = editedPost => ({
+  type: PUT_POST,
+  payload: {
+    editedPost: editedPost
+  },
+});
+
 
 export const getPostDetailsAction = post => ({
   type: GET_POST_DETAIL,

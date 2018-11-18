@@ -1,6 +1,6 @@
-import { updatePostApi, addPostApi, deletePostApi } from '../services/post';
+import { updatePostApi, addPostApi, deletePostApi, putPostApi } from '../services/post';
 import { getPostByDetailApi, getPostCommentsApi } from '../services/posts';
-import { updatePost, addPostAction, deletePostAction, getPostDetailsAction, getPostCommentsAction } from '../actions/postAction';
+import { updatePost, addPostAction, deletePostAction, putPostAction, getPostDetailsAction, getPostCommentsAction } from '../actions/postAction';
 
 export function increasePost(post) {
   return (dispatch) => {
@@ -50,10 +50,20 @@ export function deletePost(post) {
   }
 }
 
+export function putPost(editedPost) {
+  return (dispatch) => {
+    putPostApi(editedPost).then((result) => {
+      dispatch(putPostAction(result));
+    }).catch((error) => {
+      console.log(error, 'errr');
+      return error;
+    });
+  }
+}
+
 export function getPostDetails(id) {
   return (dispatch) => {
     getPostByDetailApi(id).then((result) => {
-      console.log(result);
       dispatch(getPostDetailsAction(result));
     }).catch((error) => {
       console.log(error, 'errr');

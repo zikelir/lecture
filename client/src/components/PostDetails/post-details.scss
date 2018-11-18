@@ -158,6 +158,14 @@
     padding-right: $pd-medium;
   }
 
+  &__send-edit-button {
+    display: flex;
+    align-content: center;
+    color: $pr-green;
+    cursor: pointer;
+    margin-right: $mr-small;
+  }
+
   &__delete-button {
     background-image: url('../dist/images/trash-icon.svg');
     background-repeat: no-repeat;

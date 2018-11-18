@@ -1,6 +1,7 @@
 const UPDATE_POST = 'UPDATE_POST';
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
+const PUT_POST = 'PUT_POST';
 const GET_POST_DETAIL = 'GET_POST_DETAIL';
 const GET_POST_COMMENTS = 'GET_POST_COMMENTS';
 const INITIAL_STATE = {
@@ -11,7 +12,6 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log(action, 'REDUCER')
   switch (action.type) {
     case UPDATE_POST:
       return {
@@ -31,7 +31,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state
       }
-      case DELETE_POST:
+    case DELETE_POST:
+      return {
+        ...state
+      }
+    case PUT_POST:
       return {
         ...state
       }

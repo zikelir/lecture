@@ -59,3 +59,23 @@ export const deletePostApi = async (post) => {
     console.log(e);
   }
 };
+
+export const putPostApi = async (editedPost) => {
+  try {
+    const apiResponse = await fetch(`${baseUrl}/posts/${editedPost.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'foo',
+      },
+      credentials: "same-origin",
+      body: JSON.stringify(
+        editedPost
+      )
+    });
+    const returnedResponse = await apiResponse.json();
+    return returnedResponse;
+  } catch (e) {
+    console.log(e);
+  }
+};
