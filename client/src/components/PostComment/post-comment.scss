@@ -1,9 +1,9 @@
-.post-details {
+.post-comment {
   display: flex;
   background-color: $pr-white;
   color: $pr-black;
-  margin: $mr-medium;
-  // padding: $pd-medium;
+  // margin: $mr-medium;
+  padding: $pd-medium;
 
   &__user {
     background-color: $pr-purple;

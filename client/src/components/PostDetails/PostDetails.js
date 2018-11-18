@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { getPostDetails, getPostComments } from '../../utils/post';
 import { increasePost, decreasePost } from '../../utils/post';
-
+import PostComment from '../PostComment/PostComment';
 
 class PostDetails extends React.Component {
   constructor(props) {
@@ -75,15 +75,16 @@ class PostDetails extends React.Component {
                 <div className="post-details__emotion-label">Dislike</div>
               </div>
             </div>
-            <div>
-              Comment: <input type="text"/> <button>send</button>
+            <div className="post-details__comment-input">
+                <div className="post-details__comment-label">Comment:</div>
+                <input type="text" className="post-details__make-comment"/>
+                <div className="post-details__send-comment-button">SEND ></div>
             </div>
-            <div className="post-details__comments">
+          </div>
+          <div className="post-details__comments">
                 {postComments && postComments.map(item => {
-                  // return (<div>{item.body}</div>)
-                  return JSON.stringify(item)
+                  return <PostComment comment={item} key={item.id}/>
                 })}
-            </div>
           </div>
         </div>
       </React.Fragment>

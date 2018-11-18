@@ -3,6 +3,7 @@
   background-color: $pr-white;
   color: $pr-black;
   margin: $mr-medium;
+  flex-direction: column;
   // padding: $pd-medium;
 
   &__user {
@@ -31,8 +32,9 @@
   }
 
   &__body {
+    display: flex;
     padding: $pd-large;
-    width: 100%;
+    flex-direction: column;
   }
 
   &__header {
@@ -116,7 +118,7 @@
   &__emotion-buttons {
     display: flex;
     flex-direction: row;
-    padding-top: $pd-xl-large;
+    padding-top: $pd-large;
   }
 
   &__emotion {
@@ -146,5 +148,28 @@
     padding-right: $pd-medium;
   }
 
+  &__comment-input {
+    display: flex;
+    flex-direction: column;
+    padding-top: $pd-medium;
+  }
+
+  &__comment-label {
+    padding-bottom: $pd-small;
+  }
+
+  &__make-comment {
+    border: 2px solid black;
+  }
+
+  &__send-comment-button {
+    display: flex;
+    margin-top: $pd-medium;
+    padding: $pd-medium $pd-large;
+    background-color: $pr-green;
+    color: $pr-white;
+    font-size: $fs-xs-medium;
+    width: 8rem;
+  }
 
 }
