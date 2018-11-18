@@ -39,7 +39,6 @@ class OtherCategories extends React.Component {
                 to="/addPost"
                 className="categories__button-add-post"
               >Add Post</Link>
-          {/* <div className="categories__button-add-post">Add Post</div> */}
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered}>
             <option value="" defaultValue>Order by...</option>
             <option value="byDate">Ordered by date...</option>

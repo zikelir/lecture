@@ -30,13 +30,7 @@ class PostComment extends React.Component {
     return strdate.toDateString();
   }
 
-  // seeDetails = (post) => {
-  //   console.log(post);
-  //   this.props.history.push(`/${post.category}/${post.id}`);
-  // }
-
   render() {
-    console.log(this.props, 'render');
     const { comment } = this.props;
     return (
       <React.Fragment>
@@ -73,6 +67,14 @@ class PostComment extends React.Component {
               <div className="post-comment__emotion"  onClick={() => {this.decrementPosts(comment)}}>
                 <div className="post-comment__dislike-button" />
                 <div className="post-comment__emotion-label">Dislike</div>
+              </div>
+              <div className="post-comment__emotion"  onClick={() => {this.decrementPosts(post)}}>
+                <div className="post-comment__edit-button" />
+                <div className="post-comment__emotion-label">Edit</div>
+              </div>
+              <div className="post-comment__emotion"  onClick={() => {this.decrementPosts(post)}}>
+                <div className="post-comment__delete-button" />
+                <div className="post-comment__emotion-label">Delete</div>
               </div>
             </div>
           </div>

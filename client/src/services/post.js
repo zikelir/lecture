@@ -40,3 +40,22 @@ export const addPostApi = async (post) => {
   }
 };
 
+export const deletePostApi = async (post) => {
+  try {
+    const apiResponse = await fetch(`${baseUrl}/posts/${post.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'foo',
+      },
+      credentials: "same-origin",
+      body: JSON.stringify(
+        post
+      )
+    });
+    const returnedResponse = await apiResponse.json();
+    return returnedResponse;
+  } catch (e) {
+    console.log(e);
+  }
+};

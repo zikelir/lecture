@@ -1,6 +1,6 @@
-import { updatePostApi, addPostApi } from '../services/post';
-import { getPostByDetailApi,getPostCommentsApi } from '../services/posts';
-import { updatePost, addPostAction, getPostDetailsAction, getPostCommentsAction } from '../actions/postAction';
+import { updatePostApi, addPostApi, deletePostApi } from '../services/post';
+import { getPostByDetailApi, getPostCommentsApi } from '../services/posts';
+import { updatePost, addPostAction, deletePostAction, getPostDetailsAction, getPostCommentsAction } from '../actions/postAction';
 
 export function increasePost(post) {
   return (dispatch) => {
@@ -39,6 +39,17 @@ export function addPost(post) {
   }
 }
 
+export function deletePost(post) {
+  return (dispatch) => {
+    deletePostApi(post).then((result) => {
+      dispatch(deletePostAction(result));
+    }).catch((error) => {
+      console.log(error, 'errr');
+      return error;
+    });
+  }
+}
+
 export function getPostDetails(id) {
   return (dispatch) => {
     getPostByDetailApi(id).then((result) => {
@@ -54,7 +65,6 @@ export function getPostDetails(id) {
 export function getPostComments(id) {
   return (dispatch) => {
     getPostCommentsApi(id).then((result) => {
-      console.log(result);
       dispatch(getPostCommentsAction(result));
     }).catch((error) => {
       console.log(error, 'errr');

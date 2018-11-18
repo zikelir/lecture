@@ -148,6 +148,26 @@
     padding-right: $pd-medium;
   }
 
+  &__edit-button {
+    background-image: url('../dist/images/edit-icon.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
+  &__delete-button {
+    background-image: url('../dist/images/trash-icon.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
   &__comment-input {
     display: flex;
     flex-direction: column;
@@ -155,11 +175,11 @@
   }
 
   &__comment-label {
-    padding-bottom: $pd-small;
+    padding: $pd-small 0;
   }
 
   &__make-comment {
-    border: 2px solid black;
+    border: 3px solid $pr-black;
   }
 
   &__send-comment-button {
@@ -170,6 +190,22 @@
     color: $pr-white;
     font-size: $fs-xs-medium;
     width: 8rem;
+    cursor: pointer;
   }
 
+  &__comments {
+    display: flex;
+    padding: 0 $pd-medium $pd-medium $pd-medium;
+    flex-direction: column;
+  }
+
+  &__comment {
+    margin-top: $mr-medium;
+    border: 5px  solid $pr-black;
+    border-top: none;
+    border-left: none;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }

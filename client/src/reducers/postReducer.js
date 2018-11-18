@@ -1,5 +1,6 @@
 const UPDATE_POST = 'UPDATE_POST';
 const ADD_POST = 'ADD_POST';
+const DELETE_POST = 'DELETE_POST';
 const GET_POST_DETAIL = 'GET_POST_DETAIL';
 const GET_POST_COMMENTS = 'GET_POST_COMMENTS';
 const INITIAL_STATE = {
@@ -27,6 +28,10 @@ export default (state = INITIAL_STATE, action) => {
         }),
       }
     case ADD_POST:
+      return {
+        ...state
+      }
+      case DELETE_POST:
       return {
         ...state
       }

@@ -2,8 +2,6 @@
   display: flex;
   background-color: $pr-white;
   color: $pr-black;
-  // margin: $mr-medium;
-  padding: $pd-medium;
 
   &__user {
     background-color: $pr-purple;
@@ -138,6 +136,26 @@
 
   &__dislike-button {
     background-image: url('../dist/images/brokenhearth.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
+  &__edit-button {
+    background-image: url('../dist/images/edit-icon.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: $fs-medium;
+    height: $fs-medium;
+    padding-right: $pd-medium;
+  }
+
+  &__delete-button {
+    background-image: url('../dist/images/trash-icon.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
-import { requestAllPosts } from "../../actions/postsAction.js";
+import { handleInitialData } from '../../utils/shared';
 
 import PostCard from '../PostCard/PostCard.js';
 
@@ -15,7 +15,7 @@ class Categories extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.requestAllPosts();
+    this.props.dispatch(handleInitialData());
   }
 
   render() {

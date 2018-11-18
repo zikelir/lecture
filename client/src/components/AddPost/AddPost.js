@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 import { addPost } from '../../utils/post';
+import { requestAllPosts } from "../../actions/postsAction";
 
 // import { increasePost, decreasePost } from '../../utils/post';
 
