@@ -46,7 +46,7 @@ class Main extends React.Component {
           />
           {categories ? this.generateCategoryComponents(categories) : null}
           <Route exact path="/addPost" component={AddPost} />
-          <Route exact path="/:category/:post_id" component={PostDetails} />
+          <Route path="/:category/:post_id" component={PostDetails} />
         </Switch>
       </React.Fragment>
     );
