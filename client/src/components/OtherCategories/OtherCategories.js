@@ -17,17 +17,34 @@ class OtherCategories extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.requestCategoryPosts();
     this.props.dispatch(handleCategoryPost());
   }
 
   componentWillReceiveProps(nextProps) {
     if(this.props.location.pathname !== nextProps.location.pathname) {
-      // this.props.requestCategoryPosts();
       this.props.dispatch(handleCategoryPost(this.props.location.pathname));
       return true;
     }
   }
+
+  sortPosts = ((categoryPosts, type) => {
+    if(type === 'crescending') {
+      const sorted = categoryPosts.sort((item1, item2) => {
+        return item2.timestamp - item1.timestamp
+      });
+      this.setState({categoryPosts: sorted, isSorted: true});
+    } else {
+      const sorted = categoryPosts.sort((item1, item2) => {
+        return item1.timestamp - item2.timestamp
+      });
+      this.setState({categoryPosts: sorted, isSorted: true});
+    }
+  });
+
+  handleSelect = ((e) => {
+    const type = e.target.value;
+    this.sortPosts(this.props.categoryPosts, type)
+  });
 
   render() {
     const { categoryPosts } = this.props;
@@ -39,10 +56,10 @@ class OtherCategories extends React.Component {
                 to="/addPost"
                 className="categories__button-add-post"
               >Add Post</Link>
-          <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered}>
-            <option value="" defaultValue>Order by...</option>
-            <option value="byDate">Ordered by date...</option>
-            <option value="byLikes">Ordered by likes...</option>
+          <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered} onChange={this.handleSelect}>
+            <option className="categories__option" value="" defaultValue>Order by...</option>
+            <option className="categories__option" value="crescending">Ordered by date crescending...</option>
+            <option className="categories__option" value="asending">Ordered by date asending...</option>
           </select>
         </div>
         <div className="categories__posts">

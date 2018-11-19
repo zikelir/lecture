@@ -32,7 +32,6 @@ class Header extends React.Component {
   render() {
     const { categories } = this.props;
     const activePage = this.props.location.pathname;
-    console.log(activePage);
     return (
       <React.Fragment>
         <div className="header">

@@ -64,9 +64,13 @@ export function putPost(editedPost) {
 export function getPostDetails(id) {
   return (dispatch) => {
     getPostByDetailApi(id).then((result) => {
-      dispatch(getPostDetailsAction(result));
+      if (!result.id) {
+        dispatch(getPostDetailsAction({error: 'no id'}));
+      } else {
+        dispatch(getPostDetailsAction(result));
+      }
     }).catch((error) => {
-      console.log(error, 'errr');
+      console.log(error);
       return error;
     });
   }

@@ -13,15 +13,15 @@ import Main from './components/Main/Main';
 import './index.scss';
 
 // const sagaMiddleware = createSagaMiddleware();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
   // composeEnhancers(applyMiddleware(sagaMiddleware))1
-  composeEnhancers(applyMiddleware(ReduxThunk))
+  applyMiddleware(ReduxThunk)
+  // composeEnhancers(applyMiddleware(ReduxThunk))
 );
-// sagaMiddleware.run(rootSaga);
-// console.log(store.getState(), 'GS');
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter history={browserHistory}>

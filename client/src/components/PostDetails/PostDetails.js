@@ -118,10 +118,11 @@ class PostDetails extends React.Component {
 
   render() {
     const { post, postComments } = this.props;
+    console.log(post, 'psssss');
     return (
       <React.Fragment>
-        <div className="post-details" key={post.id}>
-          <div className="post-details__user">
+        {!post.error ? <div className="post-details" key={post.id}>
+          <div className="post-details__user"> 
             <div className="post-details__avatar" />
             { this.state.isEditing === false ?
               <div className="post-details__username">{post.author}</div> :
@@ -206,7 +207,7 @@ class PostDetails extends React.Component {
                         </div>)
                 })}
           </div>
-        </div>
+        </div> : <div>I'm sorry but the provided  id doesn't exist! {post.error}</div>}
       </React.Fragment>
     );
   }
