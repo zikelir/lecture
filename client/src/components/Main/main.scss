@@ -19,3 +19,7 @@ html {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
+*::input, textarea {
+  font-family: $ff-main;
+}

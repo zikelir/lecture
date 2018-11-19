@@ -188,6 +188,16 @@
 
   &__make-comment {
     border: 3px solid $pr-black;
+    font-family: $ff-main;
+    width: 100%;
+    padding: $pd-small;
+  }
+
+  &__category-select {
+    border: 3px solid $pr-black;
+    font-family: $ff-main;
+    margin: $mr-medium $mr-medium $mr-medium 0;
+    padding: $pd-small;
   }
 
   &__send-comment-button {

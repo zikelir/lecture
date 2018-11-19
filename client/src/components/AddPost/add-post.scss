@@ -33,9 +33,14 @@
     // padding-right: $pd-xl-large;
   }
 
+  &__input {
+    font-family: $ff-main;
+  }
+
   &__textarea {
     width: 100%;
     height: 20rem;
+    font-family: $ff-main;
   }
 
   &__save-button {

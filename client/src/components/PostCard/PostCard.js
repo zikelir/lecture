@@ -1,13 +1,8 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestPost, receivePost } from "../../actions/categoriesAction.js";
-import postReducer from '../../reducers/postReducer';
-import { increasePost, decreasePost } from '../../utils/post';
 
-import { updatePostApi } from '../../services/post.js';
-import fetchPostData from '../../sagas/postSaga.js';
+import { increasePost, decreasePost } from '../../utils/post';
 
 class PostCard extends React.Component {
 

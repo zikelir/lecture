@@ -67,7 +67,7 @@ class AddPost extends React.Component {
           <div className="add-post__title">ADD POST</div>
           <div className="add-post__inputs">
             <div className="add-post__input-label">Post Title:</div>
-            <input type="text" value={this.state.title} onChange={this.handleTitle} required/>
+            <input type="text" value={this.state.title} onChange={this.handleTitle} className="add-post__input" required/>
           </div>
           <div className="add-post__inputs">
             <div className="add-post__input-label">Post Category:</div>
@@ -82,7 +82,7 @@ class AddPost extends React.Component {
           </div>
           <div className="add-post__inputs">
             <div className="add-post__input-label" required>Author:</div>
-            <input type="text" value={this.state.author} onChange={this.handleAuthor} required/>
+            <input type="text" value={this.state.author} className="add-post__input" onChange={this.handleAuthor} required/>
           </div>
           <div className="add-post__inputs">
             <div className="add-post__input-label">Content:</div>

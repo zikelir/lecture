@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { requestCategories } from "../../actions/categoriesAction";
@@ -31,7 +31,8 @@ class Header extends React.Component {
 
   render() {
     const { categories } = this.props;
-    const activePage = window.location.pathname;
+    const activePage = this.props.location.pathname;
+    console.log(activePage);
     return (
       <React.Fragment>
         <div className="header">
@@ -54,7 +55,7 @@ class Header extends React.Component {
               to={`/${item}`}
               key={item}
               className={`${
-                item === "inactive" ? "subheader__item-active" : "subheader__item"
+                `/${item}` === activePage ? "subheader__item-active" : "subheader__item"
               } `}
               onClick={() => {this.props.requestCategoryPosts}}
             >
@@ -72,8 +73,8 @@ const mapStateToProps = (state) => {
    return { categories };
  };
 
-Header = connect(
+Header = withRouter(connect(
   mapStateToProps,
-)(Header);
+)(Header));
 
 export default Header;

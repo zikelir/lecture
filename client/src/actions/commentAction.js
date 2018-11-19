@@ -1,14 +1,14 @@
-// const UPDATE_POST =  'UPDATE_POST';
+const UPDATE_COMMENT =  'UPDATE_COMMENT';
 const ADD_COMMENT =  'ADD_COMMENT';
-// const GET_POST_DETAIL = 'GET_POST_DETAIL';
-// const GET_POST_COMMENTS = 'GET_POST_COMMENTS';
+const DELETE_COMMENT = 'DELETE_COMMENT';
+const PUT_COMMENT = 'PUT_COMMENT';
 
-// export const updatePost = post => ({
-//   type: UPDATE_POST,
-//   payload: {
-//     post: post
-//   },
-// });
+export const updateCommentAction = comment => ({
+  type: UPDATE_COMMENT,
+  payload: {
+    comment: comment
+  },
+});
 
 export const addCommentAction = comment => ({
   type: ADD_COMMENT,
@@ -17,16 +17,18 @@ export const addCommentAction = comment => ({
   },
 });
 
-// export const getPostDetailsAction = post => ({
-//   type: GET_POST_DETAIL,
-//   payload: {
-//     post: post
-//   }
-// });
 
-// export const getPostCommentsAction = postComments => ({
-//   type: GET_POST_COMMENTS,
-//   payload: {
-//     postComments: postComments
-//   }
-// });
+export const deleteCommentAction = comment => ({
+  type: DELETE_COMMENT,
+  payload: {
+    comment: comment
+  },
+});
+
+export const putCommentAction = comment => ({
+  type: PUT_COMMENT,
+  payload: {
+    comment: comment
+  },
+});
+

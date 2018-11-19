@@ -1,9 +1,9 @@
-import { addCommentApi } from '../services/comment';
-import { addCommentAction } from '../actions/commentAction';
+import { addCommentApi, updateCommentApi, deleteCommentApi, putCommentApi } from '../services/comment';
+import { addCommentAction, updateCommentAction, deleteCommentAction, putCommentAction } from '../actions/commentAction';
 
-export function addComment(post) {
+export function addComment(comment) {
   return (dispatch) => {
-    addCommentApi(post).then((result) => {
+    addCommentApi(comment).then((result) => {
       dispatch(addCommentAction(result));
     }).catch((error) => {
       console.log(error, 'errr');
@@ -12,32 +12,50 @@ export function addComment(post) {
   }
 }
 
-// export function increasePost(post) {
-//   return (dispatch) => {
-//     const score = post.voteScore;
-//     post.voteScore = score + 1;
-//     updatePostApi(post, 'upVote').then((result) => {
-//       dispatch(updatePost(result));
-//     }).catch((error) => {
-//       console.log(error, 'errr');
-//       return error;
-//     });
-//   }
-// }
+export function increaseComment(comment) {
+  return (dispatch) => {
+    const score = comment.voteScore;
+    comment.voteScore = score + 1;
+    updateCommentApi(comment, 'upVote').then((result) => {
+      dispatch(updateCommentAction(result));
+    }).catch((error) => {
+      console.log(error, 'errr');
+      return error;
+    });
+  }
+}
 
-// export function decreasePost(post) {
-//   return (dispatch) => {
-//     const score = post.voteScore;
-//     post.voteScore = score - 1;
-//     updatePostApi(post, 'downVote').then((result) => {
-//       dispatch(updatePost(result));
-//     }).catch((error) => {
-//       console.log(error, 'errr');
-//       return error;
-//     });
-//   }
-// }
+export function decreaseComment(comment) {
+  return (dispatch) => {
+    const score = comment.voteScore;
+    comment.voteScore = score - 1;
+    updateCommentApi(comment, 'downVote').then((result) => {
+      dispatch(updateCommentAction(result));
+    }).catch((error) => {
+      console.log(error, 'errr');
+      return error;
+    });
+  }
+}
 
+export function deleteComment(comment) {
+  return (dispatch) => {
+    deleteCommentApi(comment).then((result) => {
+      dispatch(deleteCommentAction(result));
+    }).catch((error) => {
+      console.log(error, 'errr');
+      return error;
+    });
+  }
+}
 
-
-
+export function putComment(editedComment) {
+  return (dispatch) => {
+    putCommentApi(editedComment).then((result) => {
+      dispatch(putCommentAction(result));
+    }).catch((error) => {
+      console.log(error, 'errr');
+      return error;
+    });
+  }
+}
