@@ -207,7 +207,11 @@ class PostDetails extends React.Component {
                         </div>)
                 })}
           </div>
-        </div> : <div>I'm sorry but the provided  id doesn't exist! {post.error}</div>}
+        </div> : 
+        <div className="not-found">
+          <div className="internal-content">ID NOT FOUND!!!</div>
+        </div>
+        }
       </React.Fragment>
     );
   }

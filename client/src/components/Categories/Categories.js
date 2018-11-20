@@ -13,7 +13,7 @@ class Categories extends React.Component {
   state = {
     ordered: '',
     allPosts: [],
-    sorted: [], 
+    sorted: [],
     isSorted: false,
   }
 
@@ -52,7 +52,7 @@ class Categories extends React.Component {
             >Add Post</Link>
           {/* <div className="categories__button-add-post">Add Post</div> */}
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered} onChange={this.handleSelect}>
-            <option value="" defaultValue>Order by...</option>
+            <option value="">Order by...</option>
             <option value="crescending">Ordered by date crescending...</option>
             <option value="asending">Ordered by date asending...</option>
           </select>

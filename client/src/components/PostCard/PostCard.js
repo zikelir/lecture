@@ -30,8 +30,8 @@ class PostCard extends React.Component {
     return (
       <React.Fragment>
         <div className="post-card" key={post.id}>
-          <div className="post-card__user">
-            <div className="post-card__avatar" />
+          <div className={"post-card__user-"+post.category}>
+            <div className={"post-card__avatar-"+post.category} />
             <div className="post-card__username">{post.author}</div>
           </div>
           <div className="post-card__body">
@@ -40,7 +40,7 @@ class PostCard extends React.Component {
               <div className="post-card__details-icon" onClick={() => { this.seeDetails(post) }} />
             </div>
             <div className="post-card__infos">
-              <div className="post-card__category">{post.category && post.category.toUpperCase()}</div>
+              <div className={"post-card__category-"+post.category}>{post.category && post.category.toUpperCase()}</div>
               <div className="post-card__date">{post.timestamp && `Created in: ${this.convertDateToStr(post.timestamp)}`}</div>
               {
                 post.voteScore >= 0 ?
