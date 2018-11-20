@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from "redux";
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import { handleInitialData } from '../../utils/shared';
 
 import PostCard from '../PostCard/PostCard.js';
-import { throws } from 'assert';
 
 class Categories extends React.Component {
   state = {
@@ -65,10 +62,6 @@ class Categories extends React.Component {
       </div>
     );
   }
-};
-
-Categories.propTypes = {
-
 };
 
 const mapStateToProps = (state) => {

@@ -5,6 +5,7 @@ import postsReducer from './postsReducer';
 import postReducer from './postReducer';
 import commentReducer from './commentReducer';
 
+// all reducers combined
 const rootReducer = combineReducers({
   categoriesReducer,
   postsReducer,

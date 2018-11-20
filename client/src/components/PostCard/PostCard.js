@@ -20,7 +20,6 @@ class PostCard extends React.Component {
   }
 
   seeDetails = (post) => {
-    console.log(post);
     this.props.history.push(`/${post.category}/${post.id}`);
   }
 
@@ -78,12 +77,9 @@ const mapStateToProps = (state) => {
    const { postReducer: { allPosts, categoryPosts } } = state;
    return { allPosts, categoryPosts };
  };
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ requestPost }, dispatch);
 
 PostCard =  withRouter(connect(
   mapStateToProps,
-  // mapDispatchToProps
 )(PostCard));
 
 export default PostCard;

@@ -3,6 +3,7 @@ import { receiveCategories } from '../actions/categoriesAction';
 import { fetchAllPostsApi } from '../services/posts';
 import { receiveAllPosts } from '../actions/postsAction';
 
+// initial data fetching
 export function handleInitialData() {
   return (dispatch) => {
     fetchCategoriesApi().then((result) => {

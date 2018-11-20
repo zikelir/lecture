@@ -1,10 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-// import { requestCategoryPosts } from '../../actions/categoryPostsAction';
 import { handleCategoryPost } from '../../utils/category';
 
 
@@ -81,12 +78,9 @@ const mapStateToProps = (state) => {
 
   return { categoryPosts };
 };
-// const mapDispatchToProps = dispatch =>
-//  bindActionCreators({ requestCategoryPosts }, dispatch);
 
  OtherCategories = withRouter(connect(
  mapStateToProps,
-//  { requestCategoryPosts }
 )(OtherCategories));
 
 

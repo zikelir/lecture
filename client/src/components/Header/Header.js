@@ -1,13 +1,8 @@
 import React from "react";
 import { Link, withRouter } from 'react-router-dom';
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { requestCategories } from "../../actions/categoriesAction";
-import { requestCategoryPosts } from '../../actions/categoryPostsAction';
-import { categoriesThunk } from '../../thunks/categoriesThunk';
-import { handleInitialData } from '../../utils/shared';
 
-// const categories = ["all", "react", "redux", "udacity"];
+import { handleInitialData } from '../../utils/shared';
 class Header extends React.Component {
   state = {
     categories: []

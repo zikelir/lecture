@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-// import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Header from '../Header/Header.js';
 import Categories from '../Categories/Categories.js';

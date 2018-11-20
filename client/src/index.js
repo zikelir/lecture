@@ -2,22 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router'
 import { BrowserRouter } from 'react-router-dom';
-// import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware  } from 'redux';
 import ReduxThunk from 'redux-thunk'
 import rootReducer from './reducers/reducers';
-import middleware from './thunks/thunks';
-// import rootSaga from './sagas/sagas';
 import Main from './components/Main/Main';
 import './index.scss';
 
-// const sagaMiddleware = createSagaMiddleware();
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
+// store creation with redux and thunk
 const store = createStore(
   rootReducer,
-  // composeEnhancers(applyMiddleware(sagaMiddleware))1
   applyMiddleware(ReduxThunk)
   // composeEnhancers(applyMiddleware(ReduxThunk))
 );

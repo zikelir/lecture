@@ -118,7 +118,6 @@ class PostDetails extends React.Component {
 
   render() {
     const { post, postComments } = this.props;
-    console.log(post, 'psssss');
     return (
       <React.Fragment>
         {!post.error ? <div className="post-details" key={post.id}>
@@ -207,7 +206,7 @@ class PostDetails extends React.Component {
                         </div>)
                 })}
           </div>
-        </div> : 
+        </div> :
         <div className="not-found">
           <div className="internal-content">ID NOT FOUND!!!</div>
         </div>

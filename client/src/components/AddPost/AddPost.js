@@ -1,11 +1,7 @@
 import React from "react";
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 import { addPost } from '../../utils/post';
-import { requestAllPosts } from "../../actions/postsAction";
-
-// import { increasePost, decreasePost } from '../../utils/post';
 
 class AddPost extends React.Component {
   state = {
@@ -95,15 +91,6 @@ class AddPost extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//  };
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ requestPost }, dispatch);
-
-
-AddPost = withRouter(connect(
-  // mapStateToProps,
- //  { requestCategoryPosts }
- )(AddPost));
+AddPost = withRouter(connect()(AddPost));
 
 export default AddPost;
