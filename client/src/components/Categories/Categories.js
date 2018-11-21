@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
-import { handleInitialData } from '../../utils/shared';
+import { handleInitialData } from '../../actions/shared';
 
 import PostCard from '../PostCard/PostCard.js';
 
@@ -47,11 +47,10 @@ class Categories extends React.Component {
               to="/addPost"
               className="categories__button-add-post"
             >Add Post</Link>
-          {/* <div className="categories__button-add-post">Add Post</div> */}
           <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered} onChange={this.handleSelect}>
             <option value="">Order by...</option>
-            <option value="crescending">Ordered by date crescending...</option>
-            <option value="asending">Ordered by date asending...</option>
+            <option value="crescending">Order by decreasing date...</option>
+            <option value="asending">Order by ascending date...</option>
           </select>
         </div>
         <div className="categories__posts">

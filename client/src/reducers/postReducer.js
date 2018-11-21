@@ -17,13 +17,17 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         allPosts: state.allPosts.map(item => {
-          if(item.id === action.payload.post.id) {
+          if (item.id === action.payload.post.id) {
             return action.payload.post;
+          } else {
+            return item;
           }
         }),
         categoryPosts: state.categoryPosts.map(item => {
-          if(item.id === action.payload.post.id) {
+          if (item.id === action.payload.post.id) {
             return action.payload.post;
+          } else {
+            return item;
           }
         }),
       }

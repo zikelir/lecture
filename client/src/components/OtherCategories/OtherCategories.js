@@ -2,7 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { handleCategoryPost } from '../../utils/category';
+import { handleCategoryPost } from '../../actions/category';
+import { handleInitialData } from '../../actions/shared';
 
 
 import PostCard from '../PostCard/PostCard.js';
@@ -10,10 +11,13 @@ import PostCard from '../PostCard/PostCard.js';
 class OtherCategories extends React.Component {
   state = {
     ordered: '',
+    allPosts: [],
     categoryPosts: [],
+    isSorted: false,
   }
 
   componentDidMount() {
+    this.props.dispatch(handleInitialData());
     this.props.dispatch(handleCategoryPost());
   }
 
@@ -24,59 +28,85 @@ class OtherCategories extends React.Component {
     }
   }
 
-  sortPosts = ((categoryPosts, type) => {
-    if(type === 'crescending') {
-      const sorted = categoryPosts.sort((item1, item2) => {
-        return item2.timestamp - item1.timestamp
-      });
-      this.setState({categoryPosts: sorted, isSorted: true});
+  sortPosts = ((categoryPosts, type, category) => {
+    if(category === 'other') {
+      if(type === 'crescending') {
+        const sorted = categoryPosts.sort((item1, item2) => {
+          return item2.timestamp - item1.timestamp
+        });
+        this.setState({categoryPosts: sorted, isSorted: true});
+      } else {
+        const sorted = categoryPosts.sort((item1, item2) => {
+          return item1.timestamp - item2.timestamp
+        });
+        this.setState({categoryPosts: sorted, isSorted: true});
+      }
     } else {
-      const sorted = categoryPosts.sort((item1, item2) => {
-        return item1.timestamp - item2.timestamp
-      });
-      this.setState({categoryPosts: sorted, isSorted: true});
+      if(type === 'crescending') {
+        const sorted = categoryPosts.sort((item1, item2) => {
+          return item2.timestamp - item1.timestamp
+        });
+        this.setState({allPosts: sorted, isSorted: true});
+      } else {
+        const sorted = categoryPosts.sort((item1, item2) => {
+          return item1.timestamp - item2.timestamp
+        });
+        this.setState({allPosts: sorted, isSorted: true});
+      }
     }
   });
 
-  handleSelect = ((e) => {
+  handleSelectCategoryPosts = ((e) => {
     const type = e.target.value;
-    this.sortPosts(this.props.categoryPosts, type)
+    this.sortPosts(this.props.categoryPosts, type, 'other')
   });
 
+  handleSelectAllPosts = ((e) => {
+    const type = e.target.value;
+    this.sortPosts(this.props.allPosts, type, 'all');
+  });
+
+
   render() {
-    const { categoryPosts } = this.props;
+    const { categoryPosts, allPosts } = this.props;
     return (
-      <div className="categories" key={this.props.location.key}>
-        <div className="categories__title">{window.location.pathname.replace('/','').toUpperCase()} Posts</div>
-        <div className="categories__buttons">
-          <Link
-                to="/addPost"
-                className="categories__button-add-post"
-              >Add Post</Link>
-          <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered} onChange={this.handleSelect}>
-            <option className="categories__option" value="" defaultValue>Order by...</option>
-            <option className="categories__option" value="crescending">Ordered by date crescending...</option>
-            <option className="categories__option" value="asending">Ordered by date asending...</option>
-          </select>
+      <React.Fragment>
+        <div className="categories" key={this.props.location.key}>
+          <div className="categories__title">{this.props.location.pathname !== '/' ? window.location.pathname.replace('/','').toUpperCase() : 'All'} Posts</div>
+          <div className="categories__buttons">
+            <Link
+                  to="/addPost"
+                  className="categories__button-add-post"
+                >Add Post</Link>
+            <select type="" placeholder="Filter by..." className="categories__button-filter-by" value={this.state.ordered} onChange={this.props.location.pathname !== '/' ? this.handleSelectCategoryPosts : this.handleSelectAllPosts}>
+              <option className="categories__option" value="" defaultValue>Order by...</option>
+              <option className="categories__option" value="crescending">Ordered by decreasing date...</option>
+              <option className="categories__option" value="asending">Ordered by ascending date...</option>
+            </select>
+          </div>
+          {
+            this.props.location.pathname !== '/' ?
+            <div className="categories__posts">
+              {categoryPosts ? categoryPosts.map(item => {
+                return <PostCard post={item} key={item.id} />;
+              }) : ''}
+            </div>
+            : <div className="categories__posts">
+            {allPosts ? allPosts.map(item => {
+              return <PostCard post={item} key={item.id} />;
+            }) : ''}
+          </div>
+          }
         </div>
-        <div className="categories__posts">
-          {categoryPosts ? categoryPosts.map(item => {
-            return <PostCard post={item} key={item.id} />;
-          }) : ''}
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 };
 
-OtherCategories.propTypes = {
-
-};
-
 const mapStateToProps = (state) => {
-  const { categoryPostsReducer: { categoryPosts } } = state;
+  const { categoryPostsReducer: { categoryPosts }, postsReducer: { allPosts } } = state;
 
-  return { categoryPosts };
+  return { categoryPosts, allPosts };
 };
 
  OtherCategories = withRouter(connect(

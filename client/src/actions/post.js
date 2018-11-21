@@ -1,6 +1,6 @@
 import { updatePostApi, addPostApi, deletePostApi, putPostApi } from '../services/post';
 import { getPostByDetailApi, getPostCommentsApi } from '../services/posts';
-import { updatePost, addPostAction, deletePostAction, putPostAction, getPostDetailsAction, getPostCommentsAction } from '../actions/postAction';
+import { updatePost, addPostAction, deletePostAction, putPostAction, getPostDetailsAction, getPostCommentsAction } from './postAction';
 
 export function increasePost(post) {
   return (dispatch) => {

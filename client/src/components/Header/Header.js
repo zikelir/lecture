@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 
-import { handleInitialData } from '../../utils/shared';
+import { handleInitialData } from '../../actions/shared';
 class Header extends React.Component {
   state = {
     categories: []

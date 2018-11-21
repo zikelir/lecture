@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
-import { addPost } from '../../utils/post';
+import { addPost } from '../../actions/post';
 
 class AddPost extends React.Component {
   state = {

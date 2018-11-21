@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { getPostDetails, getPostComments } from '../../utils/post';
-import { increasePost, decreasePost, deletePost, putPost } from '../../utils/post';
-import { addComment } from '../../utils/comment';
+import { getPostDetails, getPostComments } from '../../actions/post';
+import { increasePost, decreasePost, deletePost, putPost } from '../../actions/post';
+import { addComment } from '../../actions/comment';
 import PostComment from '../PostComment/PostComment';
 
 class PostDetails extends React.Component {

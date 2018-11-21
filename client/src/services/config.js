@@ -1,4 +1,5 @@
 export const baseUrl = 'http://localhost:3001';
+// export const baseUrl = 'https://omaia-blog-server.herokuapp.com';
 
 export const getHeader = {
   method: "get",

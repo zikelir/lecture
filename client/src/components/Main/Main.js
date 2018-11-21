@@ -2,24 +2,19 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import Header from '../Header/Header.js';
-import Categories from '../Categories/Categories.js';
+// import Categories from '../Categories/Categories.js';
 import OtherCategories from '../OtherCategories/OtherCategories.js';
 import AddPost from '../AddPost/AddPost.js';
 import PostDetails from '../PostDetails/PostDetails.js';
-import { handleInitialData } from '../../utils/shared';
+import { handleInitialData } from '../../actions/shared';
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      categories: [],
-
-    };
-  }
+  state = {
+    categories: [],
+  };
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.getInitialData();
   }
 
   generateCategoryComponents = (categories) => {
@@ -38,7 +33,7 @@ class Main extends React.Component {
             exact
             path='/'
             render={props => (
-              <Categories
+              <OtherCategories
                 {...props}
               />
             )}
@@ -59,8 +54,17 @@ const mapStateToProps = (state) => {
   }
 };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getInitialData: () => {
+      dispatch(handleInitialData)
+    }
+  }
+}
+
 Main = withRouter(connect(
  mapStateToProps,
+ mapDispatchToProps
 )(Main));
 
 

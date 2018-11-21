@@ -1,7 +1,7 @@
 import { fetchCategoriesApi } from '../services/categories';
-import { receiveCategories } from '../actions/categoriesAction';
+import { receiveCategories } from './categoriesAction';
 import { fetchAllPostsApi } from '../services/posts';
-import { receiveAllPosts } from '../actions/postsAction';
+import { receiveAllPosts } from './postsAction';
 
 // initial data fetching
 export function handleInitialData() {

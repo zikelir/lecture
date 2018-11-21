@@ -1,5 +1,5 @@
 import { addCommentApi, updateCommentApi, deleteCommentApi, putCommentApi } from '../services/comment';
-import { addCommentAction, updateCommentAction, deleteCommentAction, putCommentAction } from '../actions/commentAction';
+import { addCommentAction, updateCommentAction, deleteCommentAction, putCommentAction } from './commentAction';
 
 export function addComment(comment) {
   return (dispatch) => {

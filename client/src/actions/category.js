@@ -1,5 +1,5 @@
 import { fetchCategoryPostsApi } from '../services/categoryPostsApi';
-import { receiveCategoryPosts } from '../actions/categoryPostsAction';
+import { receiveCategoryPosts } from './categoryPostsAction';
 
 export function handleCategoryPost() {
   return (dispatch) => {
