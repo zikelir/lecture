@@ -17,38 +17,39 @@ class OtherCategories extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
-    this.props.dispatch(handleCategoryPost());
+    this.props.getCategoryPostData();
+    this.props.getInitialData();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(this.props.location.pathname !== nextProps.location.pathname) {
-      this.props.dispatch(handleCategoryPost(this.props.location.pathname));
-      return true;
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if(this.props.location.pathname !== nextProps.location.pathname) {
+  //     this.props.dispatch(handleCategoryPost(this.props.location.pathname));
+  //     return true;
+  //   }
+  // }
 
-  sortPosts = ((categoryPosts, type, category) => {
+  sortPosts = ((posts, type, category) => {
+    const postArr = posts;
     if(category === 'other') {
       if(type === 'crescending') {
-        const sorted = categoryPosts.sort((item1, item2) => {
+        const sorted = postArr.sort((item1, item2) => {
           return item2.timestamp - item1.timestamp
         });
         this.setState({categoryPosts: sorted, isSorted: true});
       } else {
-        const sorted = categoryPosts.sort((item1, item2) => {
+        const sorted = postArr.sort((item1, item2) => {
           return item1.timestamp - item2.timestamp
         });
         this.setState({categoryPosts: sorted, isSorted: true});
       }
     } else {
       if(type === 'crescending') {
-        const sorted = categoryPosts.sort((item1, item2) => {
+        const sorted = postArr.sort((item1, item2) => {
           return item2.timestamp - item1.timestamp
         });
         this.setState({allPosts: sorted, isSorted: true});
       } else {
-        const sorted = categoryPosts.sort((item1, item2) => {
+        const sorted = postArr.sort((item1, item2) => {
           return item1.timestamp - item2.timestamp
         });
         this.setState({allPosts: sorted, isSorted: true});
@@ -109,8 +110,20 @@ const mapStateToProps = (state) => {
   return { categoryPosts, allPosts };
 };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getInitialData: () => {
+      dispatch(handleInitialData())
+    },
+    getCategoryPostData: () => {
+      dispatch(handleCategoryPost())
+    }
+  }
+}
+
  OtherCategories = withRouter(connect(
  mapStateToProps,
+ mapDispatchToProps
 )(OtherCategories));
 
 

@@ -15,7 +15,7 @@ class Categories extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.getInitialData();
   }
 
   sortPosts = ((allPosts, type) => {
@@ -68,8 +68,17 @@ const mapStateToProps = (state) => {
   return { allPosts };
 };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getInitialData: () => {
+      dispatch(handleInitialData())
+    }
+  }
+}
+
  Categories = withRouter(connect(
  mapStateToProps,
+ mapDispatchToProps
 )(Categories));
 
 

@@ -86,9 +86,14 @@ class PostComment extends React.Component {
       commentCount: comment.commentCount,
       timestamp: comment.timestamp,
     }
-    this.props.dispatch(putComment(editedComment));
-    this.props.dispatch(getPostComments(this.props.match.params.post_id));
-    this.setEditable(comment);
+
+    if(editedComment.author && editedComment.body) {
+      this.props.dispatch(putComment(editedComment));
+      this.props.dispatch(getPostComments(this.props.match.params.post_id));
+      this.setEditable(comment);
+    } else {
+      alert('All fields are required!!!');
+    }
   }
 
 

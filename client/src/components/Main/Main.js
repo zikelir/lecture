@@ -57,7 +57,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getInitialData: () => {
-      dispatch(handleInitialData)
+      dispatch(handleInitialData())
     }
   }
 }

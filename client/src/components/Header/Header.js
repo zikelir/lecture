@@ -9,7 +9,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.getInitialData();
   }
 
   iterateCategories = (categories) => {
@@ -67,8 +67,17 @@ const mapStateToProps = (state) => {
    return { categories };
  };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getInitialData: () => {
+      dispatch(handleInitialData());
+    }
+  }
+}
+
 Header = withRouter(connect(
   mapStateToProps,
+  mapDispatchToProps
 )(Header));
 
 export default Header;

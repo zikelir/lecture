@@ -20,14 +20,18 @@ class AddPost extends React.Component {
       author: this.state.author,
       body: this.state.content,
     }
-    this.props.dispatch(addPost(post));
-    this.setState({
-      title: '',
-      category: 'react',
-      author: '',
-      content: '',
-    });
-    this.props.history.push('/');
+    if(post.title && post.author && post.body) {
+      this.props.dispatch(addPost(post));
+      this.setState({
+        title: '',
+        category: 'react',
+        author: '',
+        content: '',
+      });
+      this.props.history.push('/');
+    } else {
+      alert('all inputs are required!!!!');
+    }
   }
 
   genetateId = () => {

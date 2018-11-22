@@ -22,8 +22,8 @@ class PostDetails extends React.Component {
 
   componentDidMount() {
     if(this.props.match.params.post_id) {
-      this.props.dispatch(getPostDetails(this.props.match.params.post_id));
-      this.props.dispatch(getPostComments(this.props.match.params.post_id));
+      this.props.postDetailsAct(this.props.match.params.post_id);
+      this.props.postCommentsAct(this.props.match.params.post_id);
     }
   }
 
@@ -63,9 +63,15 @@ class PostDetails extends React.Component {
       author: this.state.author,
       parentId: post.id,
     };
-    this.props.dispatch(addComment(comment));
-    this.props.dispatch(getPostComments(this.props.match.params.post_id));
-    this.setState({author: '', comment: ''});
+
+    if(comment.body && comment.author) {
+      this.props.dispatch(addComment(comment));
+      this.props.dispatch(getPostDetails(this.props.match.params.post_id));
+      this.props.dispatch(getPostComments(this.props.match.params.post_id));
+      this.setState({author: '', comment: ''});
+    } else {
+      alert('All inputs are required!!!');
+    }
   }
 
   genetateId = () => {
@@ -111,9 +117,14 @@ class PostDetails extends React.Component {
       commentCount: post.commentCount,
       timestamp: post.timestamp,
     }
-    this.props.dispatch(putPost(editedPost));
-    this.props.dispatch(getPostDetails(this.props.match.params.post_id));
-    this.setEditable(post);
+
+    if(editedPost.author && editedPost.body && editedPost.title) {
+      this.props.dispatch(putPost(editedPost));
+      this.props.dispatch(getPostDetails(this.props.match.params.post_id));
+      this.setEditable(post);
+    } else {
+      alert('All inputs are required!!!');
+    }
   }
 
   render() {
@@ -221,8 +232,20 @@ const mapStateToProps = (state) => {
   return { post, postComments };
 };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    postDetailsAct: (id) => {
+      dispatch(getPostDetails(id))
+    },
+    postCommentsAct: (id) => {
+      dispatch(getPostComments(id))
+    }
+  }
+}
+
 PostDetails = withRouter(connect(
   mapStateToProps,
+  mapDispatchToProps
 )(PostDetails));
 
 
