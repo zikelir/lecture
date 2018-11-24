@@ -6,7 +6,6 @@ export function addComment(comment) {
     addCommentApi(comment).then((result) => {
       dispatch(addCommentAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -19,7 +18,6 @@ export function increaseComment(comment) {
     updateCommentApi(comment, 'upVote').then((result) => {
       dispatch(updateCommentAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -32,7 +30,6 @@ export function decreaseComment(comment) {
     updateCommentApi(comment, 'downVote').then((result) => {
       dispatch(updateCommentAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -43,7 +40,6 @@ export function deleteComment(comment) {
     deleteCommentApi(comment).then((result) => {
       dispatch(deleteCommentAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -54,7 +50,6 @@ export function putComment(editedComment) {
     putCommentApi(editedComment).then((result) => {
       dispatch(putCommentAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }

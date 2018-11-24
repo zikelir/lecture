@@ -6,7 +6,6 @@ export function handleCategoryPost() {
     fetchCategoryPostsApi().then((result) => {
       dispatch(receiveCategoryPosts(result));
     }).catch((error) => {
-      console.log(error);
       return error;
     });
   }

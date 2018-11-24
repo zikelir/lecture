@@ -26,3 +26,7 @@ a:hover, a:focus, a:active {
   text-decoration: none;
   color: $pr-white;
 }
+
+a {
+  color: inherit;
+}

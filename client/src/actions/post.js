@@ -9,7 +9,6 @@ export function increasePost(post) {
     updatePostApi(post, 'upVote').then((result) => {
       dispatch(updatePost(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -22,7 +21,6 @@ export function decreasePost(post) {
     updatePostApi(post, 'downVote').then((result) => {
       dispatch(updatePost(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -33,7 +31,6 @@ export function addPost(post) {
     addPostApi(post).then((result) => {
       dispatch(addPostAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -44,7 +41,6 @@ export function deletePost(post) {
     deletePostApi(post).then((result) => {
       dispatch(deletePostAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -55,7 +51,6 @@ export function putPost(editedPost) {
     putPostApi(editedPost).then((result) => {
       dispatch(putPostAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }
@@ -70,7 +65,6 @@ export function getPostDetails(id) {
         dispatch(getPostDetailsAction(result));
       }
     }).catch((error) => {
-      console.log(error);
       return error;
     });
   }
@@ -81,7 +75,6 @@ export function getPostComments(id) {
     getPostCommentsApi(id).then((result) => {
       dispatch(getPostCommentsAction(result));
     }).catch((error) => {
-      console.log(error, 'errr');
       return error;
     });
   }

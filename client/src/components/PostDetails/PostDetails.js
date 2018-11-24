@@ -28,13 +28,13 @@ class PostDetails extends React.Component {
   }
 
   incrementPosts = (post) => {
-    this.props.dispatch(increasePost(post));
-    this.props.dispatch(getPostDetails(this.props.match.params.post_id));
+    this.props.incrementAct(post);
+    this.props.postDetailsAct(this.props.match.params.post_id);
   }
 
   decrementPosts = (post) => {
-    this.props.dispatch(decreasePost(post));
-    this.props.dispatch(getPostDetails(this.props.match.params.post_id));
+    this.props.decrementAct(post);
+    this.props.postDetailsAct(this.props.match.params.post_id);
   }
 
   deletePost = (post) => {
@@ -65,9 +65,9 @@ class PostDetails extends React.Component {
     };
 
     if(comment.body && comment.author) {
-      this.props.dispatch(addComment(comment));
-      this.props.dispatch(getPostDetails(this.props.match.params.post_id));
-      this.props.dispatch(getPostComments(this.props.match.params.post_id));
+      this.props.sendComment(comment);
+      this.props.postDetailsAct(this.props.match.params.post_id);
+      this.props.postCommentsAct(this.props.match.params.post_id);
       this.setState({author: '', comment: ''});
     } else {
       alert('All inputs are required!!!');
@@ -119,8 +119,8 @@ class PostDetails extends React.Component {
     }
 
     if(editedPost.author && editedPost.body && editedPost.title) {
-      this.props.dispatch(putPost(editedPost));
-      this.props.dispatch(getPostDetails(this.props.match.params.post_id));
+      this.props.putPostAct(editedPost);
+      this.props.postDetailsAct(this.props.match.params.post_id);
       this.setEditable(post);
     } else {
       alert('All inputs are required!!!');
@@ -234,11 +234,23 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    putPostAct: (post) => {
+      dispatch(putPost(post))
+    },
     postDetailsAct: (id) => {
       dispatch(getPostDetails(id))
     },
     postCommentsAct: (id) => {
       dispatch(getPostComments(id))
+    },
+    incrementAct: (id) => {
+      dispatch(increasePost(id));
+    },
+    decrementAct: (id) => {
+      dispatch(decreasePost(id));
+    },
+    sendComment: (comment) => {
+      dispatch(addComment(comment));
     }
   }
 }

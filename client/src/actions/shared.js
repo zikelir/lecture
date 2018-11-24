@@ -12,7 +12,6 @@ export function handleInitialData() {
       });
       dispatch(receiveCategories(categories));
     }).catch((error) => {
-      console.log(error);
       return error;
     });
 
@@ -22,7 +21,6 @@ export function handleInitialData() {
       });
       dispatch(receiveAllPosts(allPosts));
     }).catch((error) => {
-      console.log(error);
       return error;
     });
   }
