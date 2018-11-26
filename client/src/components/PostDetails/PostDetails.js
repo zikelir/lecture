@@ -16,7 +16,9 @@ class PostDetails extends React.Component {
       editAuthor: this.props.post.author,
       editTitle: this.props.post.title,
       editPostContent: this.props.post.body,
-      editPostCategory: this.props.post.category
+      editPostCategory: this.props.post.category,
+      postComments: this.props.postComments,
+      filter: ''
     }
   }
 
@@ -53,6 +55,15 @@ class PostDetails extends React.Component {
 
   handleComment = (e) => {
     this.setState({comment: e.target.value});
+  }
+
+  filterComments = (e) => {
+    const value = e.target.value;
+    if(!value) {
+      this.setState({postComments: this.props.postComments});
+    }
+    this.setState({ filter: value });
+    
   }
 
   saveComment = (post) => {
@@ -128,7 +139,9 @@ class PostDetails extends React.Component {
   }
 
   render() {
-    const { post, postComments } = this.props;
+    const { post } = this.props;
+    const { postComments } = this.state;
+    // console.log(this.props.postComments)
     return (
       <React.Fragment>
         {!post.error ? <div className="post-details" key={post.id}>
@@ -210,6 +223,7 @@ class PostDetails extends React.Component {
                 <div className="post-details__send-comment-button" onClick={() => this.saveComment(post)}>SEND ></div>
             </div>
           </div>
+          <div>Filter comments: <input type="text" onChange={this.filterComments} value={this.state.filter}/></div>
           <div className="post-details__comments">
                 {postComments && postComments.map(item => {
                   return (<div className="post-details__comment" key={item.id}>
