@@ -17,7 +17,7 @@ class PostDetails extends React.Component {
       editTitle: this.props.post.title,
       editPostContent: this.props.post.body,
       editPostCategory: this.props.post.category,
-      postComments: this.props.postComments,
+      postComments: this.props.postComments || [],
       filter: ''
     }
   }
@@ -57,14 +57,22 @@ class PostDetails extends React.Component {
     this.setState({comment: e.target.value});
   }
 
-  filterComments = (e) => {
-    const value = e.target.value;
-    if(!value) {
-      this.setState({postComments: this.props.postComments});
-    }
-    this.setState({ filter: value });
-    
-  }
+  // filterComments = (e) => {
+  //   const value = e.target.value;
+  //   let posts = this.props.postComments;
+  //   this.setState({ filter: value });
+  //   if(!value) {
+  //     this.setState({postComments: this.props.postComments});
+  //   } else {
+  //     const newArr = posts.map(item => {
+  //       // if(item.author === value) {
+  //       //   return item;
+  //       // }
+  //       console.log(item);
+  //     });
+  //     this.setState({postComments: newArr});
+  //   }
+  // }
 
   saveComment = (post) => {
     const comment = {
@@ -139,9 +147,7 @@ class PostDetails extends React.Component {
   }
 
   render() {
-    const { post } = this.props;
-    const { postComments } = this.state;
-    // console.log(this.props.postComments)
+    const { post, postComments } = this.props;
     return (
       <React.Fragment>
         {!post.error ? <div className="post-details" key={post.id}>
@@ -171,7 +177,6 @@ class PostDetails extends React.Component {
               <option value="udacity">Udacity</option>
             </select>
             }
-
               <div className="post-details__date">{post.timestamp && `Created in: ${this.convertDateToStr(post.timestamp)}`}</div>
               {
                 post.voteScore >= 0 ?
@@ -223,7 +228,6 @@ class PostDetails extends React.Component {
                 <div className="post-details__send-comment-button" onClick={() => this.saveComment(post)}>SEND ></div>
             </div>
           </div>
-          <div>Filter comments: <input type="text" onChange={this.filterComments} value={this.state.filter}/></div>
           <div className="post-details__comments">
                 {postComments && postComments.map(item => {
                   return (<div className="post-details__comment" key={item.id}>
